@@ -1,0 +1,3 @@
+# host inventory list
+# [group]
+example.org:PORT

@@ -1,0 +1,17 @@
+DEVICE INFO
+-----------
+DEV_name = yun
+DEV_mac =
+DEV_clock = 
+DEV_ID = sbox2
+LOC =
+
+SENSOR1 = MQ-2 smoke sensor (mq2)
+SENSOR2 = Shinyei PM2.5/10 sensor (pm)
+SENSOR3 = HCHO sensor (hcho)
+SENSOR4 = MQ-5 propane sensor (mq5)
+
+SENSOR1_TOPIC   "/sbox2/loc0/mq2"
+SENSOR2_TOPIC   "/sbox2/loc0/pm"
+SENSOR3_TOPIC   "/sbox2/loc0/hcho"
+SENSOR4_TOPIC   "/sbox2/loc0/mq5"

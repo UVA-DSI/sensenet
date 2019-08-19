@@ -1,0 +1,15 @@
+---
+- name: Install InfluxDB
+  hosts: sensornet
+  roles:
+    - influxdb
+
+- name: Install telegraf
+  hosts: sensornet
+  roles: 
+    - telegraf
+
+- name: Install Grafana
+  hosts: sensornet 
+  roles:
+    - grafana   

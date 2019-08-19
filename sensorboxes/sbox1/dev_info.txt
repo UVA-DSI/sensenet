@@ -1,0 +1,25 @@
+DEVICE INFO
+-----------
+DEV_name = 
+DEV_mac =
+DEV_clock = 160
+DEV_ID = sbox1
+LOC =
+
+SENSOR1 = BMP-388 (temp)
+SENSOR2 = BMP-388 (pressure)
+SENSOR3 = HTU21D-F (humidity)
+SENSOR4 = SGP30 (TVOC)
+SENSOR5 = SGP30 (eCO2)
+SENSOR6 = VEML7700 (lux)
+SENSOR7 = VEML7700 (white)
+SENSOR8 = VEML7700 (ALS)
+
+SENSOR1_TOPIC   "/sbox1/loc0/temp"
+SENSOR2_TOPIC   "/sbox1/loc0/pressure"
+SENSOR3_TOPIC   "/sbox1/loc0/humidity"
+SENSOR4_TOPIC   "/sbox1/loc0/TVOC"
+SENSOR5_TOPIC   "/sbox1/loc0/CO2"
+SENSOR6_TOPIC   "/sbox1/loc0/lux"
+SENSOR7_TOPIC   "/sbox1/loc0/white"
+SENSOR8_TOPIC   "/sbox1/loc0/ALS"

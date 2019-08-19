@@ -1,0 +1,22 @@
+---
+- hosts: YOURHOST 
+  remote_user: YOURUSER 
+  become: yes
+  become_method: sudo
+  vars:
+    LOCAL_HOSTNAME: 'YOURIP'
+    LOCAL_FQDN_NAME: 'YOURFQDN'
+  tasks:
+    - name: Set the timezone for the server to be UTC
+      command: ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+    - name: Set up a unique hostname
+      hostname: name={{ LOCAL_HOSTNAME }}
+    - name: Add the server's domain to the hosts file
+      lineinfile: dest=/etc/hosts
+                  regexp='.*{{ item }}$'
+                  line="{{ hostvars[item].ansible_default_ipv4.address }} {{ LOCAL_FQDN_NAME }} {{ LOCAL_HOSTNAME }}"
+                  state=present
+      when: hostvars[item].ansible_default_ipv4.address is defined
+      with_items: "{{ groups['linode'] }}"
+    - name: Update packages
+      apt: update_cache=yes upgrade=dist

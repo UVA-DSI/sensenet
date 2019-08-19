@@ -1,0 +1,13 @@
+---
+- name: Add "buster" to sources (required for Certbot)
+  apt_repository:
+  repo: deb http://httpredir.debian.org/debian buster main
+  state: present
+  update_cache: yes
+
+- name: Install Certbot
+  apt:
+  name: python-certbot
+  state: present
+  default_release: buster 
+  cache_valid_time: 3600
