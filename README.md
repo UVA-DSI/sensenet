@@ -23,6 +23,11 @@ sensors we equipped each box. For more details about the sensors,
 [check out the 'sensor-specification'](sensor-spec.md) document and 
 the 'datasheets' directory.
 
+## Demo
+
+[Here is one of our sensor boxes](https://sensors.unixjazz.org/d/9l9_irIWk/sbox1?orgId=1&refresh=1m&from=now-12h&to=now) 
+collecting simple, real-time metrics for visualization.
+
 ## Contact and licensing info
 
 Reach out to LF Murillo (@unixjazz) for more information about the 
@@ -34,4 +39,4 @@ released as 'CC-BY-SA-4.0-international'.
 __Happy environmental sensing and hw hacking!__
 
 ---
-Sign-off: LFRM, 08-16-2019
+Sign-off: LFRM, 08-19-2019
