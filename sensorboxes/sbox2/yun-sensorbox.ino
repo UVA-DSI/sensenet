@@ -27,7 +27,7 @@
 #define SENSOR3 A2
 #define SENSOR4 A3
 
-// calibration HCHO
+// calibration HCHO sensor
 #define R0 34.28
 
 float Vol = 0;
@@ -113,10 +113,10 @@ void loop() {
     dtostrf(concentration, 5, 2, tempString);
     client.publish(SENSOR2_TOPIC, tempString);
     
-    // HCHO sensor
+    // HCHO sensor, formula by Seeed Studio
     int sensorValue = analogRead(SENSOR3);
-    float Vol = sensorValue * 4.95 / 1023;
-    float ppm = PPMformula(Vol, 0.1);    
+    double Rs = (1023.0 / sensorValue) - 1;
+    double ppm = pow(10.0,((log10(Rs/R0) - 0.0827) / (-0.4807)));
     dtostrf(ppm, 5, 2, tempString);
     client.publish(SENSOR3_TOPIC, tempString);
     SERIAL_PORT_USBVIRTUAL.println(ppm);

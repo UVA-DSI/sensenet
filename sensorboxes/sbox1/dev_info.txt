@@ -1,7 +1,7 @@
 DEVICE INFO
 -----------
 DEV_name = 
-DEV_mac =
+DEV_mac = 
 DEV_clock = 160
 DEV_ID = sbox1
 LOC =
