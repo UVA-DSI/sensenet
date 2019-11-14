@@ -24,31 +24,45 @@
 #include <SPI.h>
 #include <Wire.h>
 #include <PMS.h>
+#include <RTCZero.h>
 #include <SparkFun_SCD30_Arduino_Library.h>
 
-// sensor objs
+// init sensor objs
 PMS pms(Serial1);
 PMS::DATA data;
 SCD30 CO2Sensor;
 
+// RTC init settings
+RTCZero rtc;
+
+const uint8_t seconds = 0;
+const uint8_t minutes = 0;
+const uint8_t hours = 0;
+
+const uint8_t day = 1;
+const uint8_t month = 1;
+const uint8_t year = 69;
+
+unsigned char pin_val;
+
 // application EUI
-static const u1_t PROGMEM APPEUI[8]= { YOUR_APP_ID };
+static const u1_t PROGMEM APPEUI[8]= { 0x, 0x, 0x, 0x, 0x, 0x, 0x, 0x };
 void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
 
 // dev EUI
-static const u1_t PROGMEM DEVEUI[8]= { YOUR_DEV_ID };
+static const u1_t PROGMEM DEVEUI[8]= { 0x, 0x, 0x, 0x, 0x, 0x, 0x, 0x };
 void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
 
 // app key
-static const u1_t PROGMEM APPKEY[16] = { YOUR_APP_KEY };
+static const u1_t PROGMEM APPKEY[16] = { };
 void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
 
 // payload to TTN gateway
 static uint8_t payload[14];
 static osjob_t sendjob;
 
-// schedule TX every this many seconds (might become longer due to duty cycle limitations): 15 min
-const unsigned TX_INTERVAL = 60;
+// schedule TX every this many seconds
+const unsigned TX_INTERVAL = 10;
 
 // pin mapping for Feather M0
 const lmic_pinmap lmic_pins = {
@@ -60,6 +74,19 @@ const lmic_pinmap lmic_pins = {
     .rssi_cal = 8, // LBT cal for the Feather M0, in dB
     .spi_freq = 8000000,
 };
+
+// RTC drift for every alarm event 
+void alarmMatch() {
+    int alarmMinutes = rtc.getMinutes();
+    alarmMinutes += 15;
+    if (alarmMinutes >= 60){
+        alarmMinutes -= 60;
+    }
+    rtc.setAlarmMinutes(alarmMinutes);
+    rtc.enableAlarm(rtc.MATCH_MMSS);
+    //USBDevice.init();
+    //USBDevice.attach();
+}
 
 // LoRa event handling
 void onEvent (ev_t ev) {
@@ -130,6 +157,11 @@ void onEvent (ev_t ev) {
               Serial.println(LMIC.dataLen);
               Serial.println(F(" bytes of payload"));
             }
+            // Standby for 15min
+            Serial.println(" :: going to standby :: ");
+            //USBDevice.detach();
+            rtc.standbyMode();
+            Serial.println(" :: waking up from standby :: ");
             // Schedule next transmission
             os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
             break;
@@ -218,15 +250,24 @@ void do_send(osjob_t* j){
         
         // params: (port_number, payload_array, payload-size, request-ack?)
         LMIC_setTxData2(1, payload, sizeof(payload)-1, 0);
-    }    
+    }  
 }
 
 // MCU setup
 void setup() {
     delay(3000);
-    while (! Serial);
+    //while (! Serial);
     Serial.begin(9600);
     Serial.println(F("Starting sbox0 \\m/"));
+
+    // necessary for low-energy mode on M0
+    for (pin_val = 0; pin_val < 23; pin_val++) { 
+       pinMode(pin_val, INPUT_PULLUP);
+    }
+
+    for (pin_val = 32; pin_val < 42; pin_val++) {
+       pinMode(pin_val, INPUT_PULLUP);
+    }
     
     // turn off LED on pin 13
     digitalWrite(LED_BUILTIN, LOW);
@@ -256,6 +297,16 @@ void setup() {
     LMIC_selectSubBand(1);
     // Start job (sending automatically starts OTAA too)
     do_send(&sendjob);
+
+    // RTC init
+    rtc.begin();
+    rtc.setTime(hours, minutes, seconds);
+    rtc.setDate(day, month, year);
+
+    // RTC alarm, 15m
+    rtc.setAlarmMinutes(15);
+    rtc.enableAlarm(rtc.MATCH_MMSS);
+    rtc.attachInterrupt(alarmMatch);
 }
 
 void loop() {
