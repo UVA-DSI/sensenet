@@ -1,12 +1,14 @@
-# SDS Sensenet
+# Sensenet: networked environmental sensing for all
 
-This is the temporary repository for the 'School of Data Science' 
-Sensenet project at University of Virginia. Here you will find the 
-sources for the backend, frontend, and sensor devices we use in 
-our sensor network.
+This repository contains the documentation for the 'Sensenet'
+project. Here you will find the software and hardware sources 
+for the backend, frontend, and sensor devices we use.
 
-This project is being developed in partnership with Smart Cville
-and Linklab at UVA.
+This project is being primarily developed at the School of Data 
+Science in partnership with Smart Cville and Linklab at University 
+of Virginia. It is, however, open to public participation: feel
+free to use, study, modify, and contribute back changes to the
+work that you will find here. We are looking for contributors!
 
 ## What is included in this repository
 
@@ -30,13 +32,13 @@ collecting simple, real-time metrics for visualization.
 
 ## Contact and licensing info
 
-Reach out to LF Murillo (@unixjazz) for more information about the 
-project. Source files are released in the public domain, unless 
-specified in the LICENSE file included in the directory of a
-library component or build tool we use. All the documentation is
-released as 'CC-BY-SA-4.0-international'.
+Check the AUTHORS file for the list of contributors. For more 
+information about the project, contact the project contributors.
+
+All software is licensed as GPLv3; all hardware is licensed as
+CERN-OHL-S-v2, and all documentation is released as 'CC-BY-SA-4.0
+International', unless specified in the LICENSE file included in
+the directory of a library component or build tool we use.
 
 __Happy environmental sensing and hw hacking!__
 
----
-Sign-off: LFRM, 08-19-2019
