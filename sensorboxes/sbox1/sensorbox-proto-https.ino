@@ -1,5 +1,5 @@
 /*
- *  SDS-sensenet proto, v.0.6
+ *  SDS-sensenet proto, v.0.7
  * 
  *  DEV_name = "nodemcu-1.0"
  *  DEV_ID = sbox1
@@ -10,9 +10,11 @@
  *  SENSOR3 = HTU21D-F (humidity)
  *  SENSOR4 = SGP30 (TVOC)
  *  SENSOR5 = SGP30 (eCO2)
- *  SENSOR6 = VEML7700 (lux)
- *  SENSOR7 = VEML7700 (white)
- *  SENSOR8 = VEML7700 (ALS)
+ *  SENSOR6 = SGP30 (H2)
+ *  SENSOR7 = SGP30 (ethanol)
+ *  SENSOR8 = VEML7700 (lux)
+ *  SENSOR9 = VEML7700 (white)
+ *  SENSOR10 = VEML7700 (ALS)
  *  
  *  Code in the public domain!
  *  Contact: <lfr6d@virginia.edu>
@@ -21,7 +23,6 @@
  *  for Adafruit Industries (tm)
  */
 
-#include <Wire.h>
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <Adafruit_Sensor.h>
@@ -41,6 +42,8 @@ int als;             // ambient_light
 int last_msg;        // temp_var
 int tvoc;            // ppb
 int co2;             // ppm
+int h2;              // ppm
+int ethanol          // ppm
 long now;            // temp_var
 
 // store certs
@@ -60,9 +63,11 @@ Adafruit_VEML7700 veml;
 #define SENSOR3_TOPIC   "/sbox1/loc0/humidity"
 #define SENSOR4_TOPIC   "/sbox1/loc0/TVOC"
 #define SENSOR5_TOPIC   "/sbox1/loc0/CO2"
-#define SENSOR6_TOPIC   "/sbox1/loc0/lux"
-#define SENSOR7_TOPIC   "/sbox1/loc0/white"
-#define SENSOR8_TOPIC   "/sbox1/loc0/ALS"
+#define SENSOR6_TOPIC   "/sbox1/loc0/H2"
+#define SENSOR7_TOPIC   "/sbox1/loc0/ethanol"
+#define SENSOR8_TOPIC   "/sbox1/loc0/lux"
+#define SENSOR9_TOPIC   "/sbox1/loc0/white"
+#define SENSOR10_TOPIC   "/sbox1/loc0/ALS"
 
 void mqtt_connect() {
   Serial.println("MQTT connecting...");
@@ -74,7 +79,7 @@ void mqtt_connect() {
     Serial.print("Connection failed, status code = ");
     Serial.print(client.state());
   }
-}
+} 
 
 // Callback for MQTT msgs, unused for now
 //void receivedCallback(char* topic, byte* payload, unsigned int length) {
@@ -89,15 +94,15 @@ void mqtt_connect() {
 
 void WiFi_connect() {
   WiFi.disconnect(true);
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-  delay(10000);
+  WiFi.begin(ssid, passwd);
+  delay(5000);
   
   if (WiFi.status() == WL_CONNECTED) {
     Serial.println("");
     Serial.println("WiFi connected");
     Serial.println("IP address: ");
     Serial.println(WiFi.localIP());
+    digitalWrite(LED_BUILTIN, LOW);
   }
 }
 
@@ -127,17 +132,19 @@ void setup() {
   Serial.print("Connecting to ");
   Serial.println(ssid);
   
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+  pinMode(LED_BUILTIN, OUTPUT); 
 
   //ESPclient.allowSelfSignedCerts();
   ESPclient.setTrustAnchors(&cert);
-  ESPclient.setFingerprint(ca_fingerprint);
+  ESPclient.setInsecure();
+  //ESPclient.setFingerprint(ca_fingerprint);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, passwd);
 
   client.setServer(mqtt_server, mqtt_port);
   client.connect(mqtt_clientID, mqtt_user, mqtt_passwd);
   //client.setCallback(receivedCallback);
-
+  
   // Set up BMP388 sensor (source: Adafruit)
   if (! bmp.begin()) {
     Serial.println("Could not find BMP388 sensor");
@@ -148,7 +155,7 @@ void setup() {
   bmp.setPressureOversampling(BMP3_OVERSAMPLING_4X);
   bmp.setIIRFilterCoeff(BMP3_IIR_FILTER_COEFF_3);
   //bmp.setOutputDataRate(BMP3_ODR_50_HZ);
-
+  
   // Set up SGP30 sensor (source: Adafruit)
   if (! sgp.begin()) {
     Serial.println("Could not find SGP30 sensor");
@@ -158,9 +165,9 @@ void setup() {
   Serial.print(sgp.serialnumber[0], HEX);
   Serial.print(sgp.serialnumber[1], HEX);
   Serial.println(sgp.serialnumber[2], HEX);
-  /// Set up baseline for calibration
-  sgp.setIAQBaseline(0xFFF9, 0xFFFF);
-
+  // Set up baseline for calibration - FIXME
+  //sgp.setIAQBaseline(0xFFF9, 0xFFFF);
+  
   // Set up VEML7700 sensor (source: Adafruit)
   if (! veml.begin()) {
     Serial.println("Could not find VEML7700 sensor");
@@ -168,16 +175,17 @@ void setup() {
   }
   Serial.println("Found VEML7700 sensor");
   veml.setGain(VEML7700_GAIN_1);
-  veml.setIntegrationTime(VEML7700_IT_800MS);
+  veml.setIntegrationTime(VEML7700_IT_100MS);
   veml.setLowThreshold(10000);
   veml.setHighThreshold(20000);
   veml.interruptEnable(false);
-  //veml.powerSaveEnable(true);
-  //veml.setPowerSaveMode(VEML7700_POWERSAVE_MODE4);
+  veml.powerSaveEnable(true);
+  veml.setPowerSaveMode(VEML7700_POWERSAVE_MODE4);
 }
 
 void loop() {
   if (WiFi.status() != WL_CONNECTED) {
+    digitalWrite(LED_BUILTIN, HIGH);
     WiFi_connect();
   }
   if (!client.connected()) {
@@ -194,7 +202,7 @@ void loop() {
     Serial.print("Temperature: ");
     Serial.println(temperature);
     dtostrf(temperature, 5, 2, tempString);
-    client.publish(SENSOR1_TOPIC, tempString); 
+    client.publish(SENSOR1_TOPIC, tempString);
     // SENSOR2
     pressure = bmp.pressure / 100.0;
     Serial.print("Pressure: ");
@@ -209,7 +217,7 @@ void loop() {
     client.publish(SENSOR3_TOPIC, tempString);
     // SENSOR4
     sgp.IAQmeasure();
-    //sgp.setHumidity(getAbsoluteHumidity(temperature, humidity));
+    sgp.setHumidity(getAbsoluteHumidity(temperature, humidity));
     tvoc = sgp.TVOC;
     Serial.print("TVOC: "); 
     Serial.print(tvoc); 
@@ -224,12 +232,27 @@ void loop() {
     dtostrf(co2, 5, 2, tempString);
     client.publish(SENSOR5_TOPIC, tempString);
     // SENSOR6
+    sgp.IAQmeasureRaw();  
+    h2 = sgp.rawH2
+    Serial.print("Raw H2: "); 
+    Serial.print(h2); 
+    Serial.println("");
+    dtostrf(h2, 5, 2, tempString);
+    client.publish(SENSOR6_TOPIC, tempString);
+    // SENSOR7
+    ethanol = sgp.rawEthanol
+    Serial.print("Raw Ethanol: "); 
+    Serial.print(ethanol); 
+    Serial.println("");
+    dtostrf(ethanol, 5, 2, tempString);
+    client.publish(SENSOR7_TOPIC, tempString);
+    // SENSOR8
     lux = veml.readLux();
     Serial.print("Lux: ");
     Serial.println(lux);
     dtostrf(lux, 5, 2, tempString);
     client.publish(SENSOR6_TOPIC, tempString);
-    // SENSOR7
+    // SENSOR9
     white = veml.readWhite();
     Serial.print("White: ");
     Serial.println(white);
