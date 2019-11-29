@@ -27,8 +27,8 @@ the 'datasheets' directory.
 
 ## Demo
 
-[Here is one of our sensor boxes](https://sensors.unixjazz.org/d/9l9_irIWk/sbox1?orgId=1&refresh=1m&from=now-12h&to=now) 
-collecting simple, real-time metrics for visualization.
+[Here is one of our sensor boxes](https://sensors.unixjazz.org/dashboard/snapshot/lQb7r3Dx4m6W13pW89Vwu8GupbfqqIbo) collecting real-time metrics for 
+visualization.
 
 ## Contact and licensing info
 
