@@ -1,5 +1,5 @@
  /* 
-  *  SDS sensorbox prototype, v.0.1
+  *  SDS sensorbox prototype, v.0.2
   *  
   *  DEV_NAME=mendes
   *  DEV_ID=sbox0
@@ -7,7 +7,7 @@
   *  
   *  Sensor list:
   *  SENSOR1 = PMS7003 (pm2.5, pm10)
-  *  SENSOR2 = Sensiron SCD30 (CO2, temp, hum)
+  *  SENSOR2 = Sensiron SCD30 (CO2, temp, humidity)
   *  
   *  Depends on:
   *  Arduino-lmic, RTCZero, PMS, Sparkfun SCD30 library
@@ -26,6 +26,7 @@
 #include <PMS.h>
 #include <RTCZero.h>
 #include <SparkFun_SCD30_Arduino_Library.h>
+#include "ttn-credentials.h"
 
 // init sensor objs
 PMS pms(Serial1);
@@ -43,26 +44,17 @@ const uint8_t day = 1;
 const uint8_t month = 1;
 const uint8_t year = 69;
 
-unsigned char pin_val;
-
-// application EUI
-static const u1_t PROGMEM APPEUI[8]= { 0x, 0x, 0x, 0x, 0x, 0x, 0x, 0x };
-void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
-
-// dev EUI
-static const u1_t PROGMEM DEVEUI[8]= { 0x, 0x, 0x, 0x, 0x, 0x, 0x, 0x };
-void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
-
-// app key
-static const u1_t PROGMEM APPKEY[16] = { };
-void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
+// TTN credentials
+void os_getArtEui (u1_t *buf) { memcpy_P(buf, APPEUI, 8); }
+void os_getDevEui (u1_t *buf) { memcpy_P(buf, DEVEUI, 8); }
+void os_getDevKey (u1_t *buf) { memcpy_P(buf, APPKEY, 16); }
 
 // payload to TTN gateway
 static uint8_t payload[14];
 static osjob_t sendjob;
 
-// schedule TX every this many seconds
-const unsigned TX_INTERVAL = 10;
+// sleep interval in X minutes
+const unsigned SLEEP_INTERVAL = 15;
 
 // pin mapping for Feather M0
 const lmic_pinmap lmic_pins = {
@@ -75,17 +67,18 @@ const lmic_pinmap lmic_pins = {
     .spi_freq = 8000000,
 };
 
+// pin mapping for RST function of PMS7003
+const int pmsRSTpin = 5;
+
 // RTC drift for every alarm event 
 void alarmMatch() {
     int alarmMinutes = rtc.getMinutes();
-    alarmMinutes += 15;
+    alarmMinutes += SLEEP_INTERVAL;
     if (alarmMinutes >= 60){
         alarmMinutes -= 60;
     }
     rtc.setAlarmMinutes(alarmMinutes);
     rtc.enableAlarm(rtc.MATCH_MMSS);
-    //USBDevice.init();
-    //USBDevice.attach();
 }
 
 // LoRa event handling
@@ -157,13 +150,21 @@ void onEvent (ev_t ev) {
               Serial.println(LMIC.dataLen);
               Serial.println(F(" bytes of payload"));
             }
-            // Standby for 15min
-            Serial.println(" :: going to standby :: ");
-            //USBDevice.detach();
-            rtc.standbyMode();
-            Serial.println(" :: waking up from standby :: ");
+            // Standby mode
+            Serial.println(":: now in standby ::");
+            digitalWrite(LED_BUILTIN, LOW);
+            // rtc.standbyMode();
+            // and detach USB
+            USB->DEVICE.CTRLA.reg &= ~USB_CTRLA_ENABLE;
+             __WFI();
+            // Return from Standby
+            // and re-attach USB
+            USB->DEVICE.CTRLA.reg |= USB_CTRLA_ENABLE;
+            Serial.println("");
+            Serial.println(":: waking up from standby ::");
+            digitalWrite(LED_BUILTIN, HIGH);
             // Schedule next transmission
-            os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
+            do_send(&sendjob);
             break;
         case EV_LOST_TSYNC:
             Serial.println(F("EV_LOST_TSYNC"));
@@ -198,8 +199,10 @@ void do_send(osjob_t* j){
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
         // PMS start and wait 20s for stable readings
+        digitalWrite(pmsRSTpin, HIGH);
         pms.wakeUp();
         delay(20000);
+        
         // read the temperature + humidity
         float co2 = CO2Sensor.getCO2();
         float temp = CO2Sensor.getTemperature();
@@ -244,45 +247,37 @@ void do_send(osjob_t* j){
           uint16_t pm10 = data.PM_AE_UG_10_0;
           payload[10] = pm10 >> 8;
           payload[11] = pm10 & 0xFF;
-          pms.sleep();
-          }
-        pms.sleep();
+        }
+        digitalWrite(pmsRSTpin, LOW);
         
         // params: (port_number, payload_array, payload-size, request-ack?)
         LMIC_setTxData2(1, payload, sizeof(payload)-1, 0);
-    }  
+    }
 }
 
 // MCU setup
 void setup() {
     delay(3000);
     //while (! Serial);
-    Serial.begin(9600);
+    Serial.begin(115200);
     Serial.println(F("Starting sbox0 \\m/"));
-
-    // necessary for low-energy mode on M0
-    for (pin_val = 0; pin_val < 23; pin_val++) { 
-       pinMode(pin_val, INPUT_PULLUP);
-    }
-
-    for (pin_val = 32; pin_val < 42; pin_val++) {
-       pinMode(pin_val, INPUT_PULLUP);
-    }
     
     // turn off LED on pin 13
-    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(LED_BUILTIN, HIGH);
     
-    // Serial1 on SAMD21 for PM sensor
+    // Serial1 for PM sensor
     Serial1.begin(9600);
-    //pms.passiveMode();
-    pms.sleep();
+    // PMS RST pin
+    pinMode(pmsRSTpin, OUTPUT);
+    pms.passiveMode();
+    digitalWrite(pmsRSTpin, LOW);
     
     // start CO2 + temp + humidity sensors
     Wire.begin();
     CO2Sensor.begin();
-    CO2Sensor.setMeasurementInterval(60); // in seconds
+    CO2Sensor.setMeasurementInterval(60);   // in seconds, FIXME!
     CO2Sensor.setAltitudeCompensation(174); // in meters
-    CO2Sensor.setAmbientPressure(835); // in mBar
+    CO2Sensor.setAmbientPressure(835);      // in mBar
 
     // LMIC init
     os_init();
@@ -291,20 +286,22 @@ void setup() {
     // Disable link-check mode and ADR, because ADR tends to complicate testing
     LMIC_setLinkCheckMode(0);
     // Set the data rate to Spreading Factor 7.  This is the fastest supported rate for 125 kHz channels, and it
-    // minimizes air time and battery power. Set the transmission power to 14 dBi (25 mW)
-    LMIC_setDrTxpow(DR_SF7,14);
+    // minimizes air time and battery power. 
+    // Set the transmission power: 2 - 14 dBi (25 mW)
+    LMIC_setDrTxpow(DR_SF7,5);
     // in the US, with TTN, it saves join time if we start on subband 1 (channels 8-15)
     LMIC_selectSubBand(1);
-    // Start job (sending automatically starts OTAA too)
+    // Start job (sending automatically starts OTAA)
     do_send(&sendjob);
 
     // RTC init
     rtc.begin();
     rtc.setTime(hours, minutes, seconds);
     rtc.setDate(day, month, year);
-
-    // RTC alarm, 15m
-    rtc.setAlarmMinutes(15);
+    SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
+    
+    // RTC alarm
+    rtc.setAlarmMinutes(SLEEP_INTERVAL);
     rtc.enableAlarm(rtc.MATCH_MMSS);
     rtc.attachInterrupt(alarmMatch);
 }
