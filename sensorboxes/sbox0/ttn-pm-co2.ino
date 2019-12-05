@@ -203,7 +203,8 @@ void do_send(osjob_t* j){
         pms.wakeUp();
         delay(20000);
         
-        // read the temperature + humidity
+        // read the CO2 sensor values
+        CO2Sensor.readMeasurement();
         float co2 = CO2Sensor.getCO2();
         float temp = CO2Sensor.getTemperature();
         float rel_hum = CO2Sensor.getHumidity();
@@ -257,7 +258,7 @@ void do_send(osjob_t* j){
 
 // MCU setup
 void setup() {
-    delay(3000);
+    delay(1000);
     //while (! Serial);
     Serial.begin(115200);
     Serial.println(F("Starting sbox0 \\m/"));
@@ -275,10 +276,12 @@ void setup() {
     // start CO2 + temp + humidity sensors
     Wire.begin();
     CO2Sensor.begin();
-    CO2Sensor.setMeasurementInterval(60);   // in seconds, FIXME!
+    CO2Sensor.setAutoSelfCalibration(1);    // turn on self-calibration
+    CO2Sensor.setMeasurementInterval(20);   // in seconds, FIXME!
     CO2Sensor.setAltitudeCompensation(174); // in meters
     CO2Sensor.setAmbientPressure(835);      // in mBar
-
+    CO2Sensor.readMeasurement();
+    
     // LMIC init
     os_init();
     // Reset the MAC state. Session and pending data transfers will be discarded
@@ -287,8 +290,8 @@ void setup() {
     LMIC_setLinkCheckMode(0);
     // Set the data rate to Spreading Factor 7.  This is the fastest supported rate for 125 kHz channels, and it
     // minimizes air time and battery power. 
-    // Set the transmission power: 2 - 14 dBi (25 mW)
-    LMIC_setDrTxpow(DR_SF7,5);
+    // Set the transmission power: 14 dBi (25 mW)
+    LMIC_setDrTxpow(DR_SF7,14);
     // in the US, with TTN, it saves join time if we start on subband 1 (channels 8-15)
     LMIC_selectSubBand(1);
     // Start job (sending automatically starts OTAA)
