@@ -336,9 +336,9 @@ void do_send(osjob_t* j){
 void setup() {
     delay(1000);
     //while (! Serial);
-    Serial.begin(115200);
 
 	#ifdef DEBUG
+	    Serial.begin(115200);
     	Serial.println(F("Starting sbox0 \\m/"));
 
 		// turn off LED on pin 13
