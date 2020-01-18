@@ -1,5 +1,5 @@
  /* 
-  *  SDS sensorbox prototype, v.0.2
+  *  SDS sensorbox prototype, v.0.3
   *  
   *  DEV_NAME=mendes
   *  DEV_ID=sbox0
@@ -28,10 +28,7 @@
 #include <SparkFun_SCD30_Arduino_Library.h>
 #include "ttn-credentials.h"
 
-/**************************************
- * DEBUG MODE TOGGLE
- **************************************/
-
+// debug mode
 #undef DEBUG
 
 // init sensor objs
@@ -89,170 +86,142 @@ void alarmMatch() {
 
 // LoRa event handling
 void onEvent (ev_t ev) {
-	#ifdef DEBUG
-		Serial.print(os_getTime());
-		Serial.print(": ");
-	#endif
-
+    #ifdef DEBUG
+    Serial.print(os_getTime());
+    Serial.print(": ");
+    #endif
     switch(ev) {
         case EV_SCAN_TIMEOUT:
-			#ifdef DEBUG
-				Serial.println(F("EV_SCAN_TIMEOUT"));
-			#endif
-            break;
-
+            #ifdef DEBUG
+            Serial.println(F("EV_SCAN_TIMEOUT"));
+            #endif
+            break;    
         case EV_BEACON_FOUND:
-			#ifdef DEBUG
-				Serial.println(F("EV_BEACON_FOUND"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_BEACON_FOUND"));
+            #endif
             break;
-
         case EV_BEACON_MISSED:
-			#ifdef DEBUG
-				Serial.println(F("EV_BEACON_MISSED"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_BEACON_MISSED"));
+            #endif
             break;
-
         case EV_BEACON_TRACKED:
-			#ifdef DEBUG
-            	Serial.println(F("EV_BEACON_TRACKED"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_BEACON_TRACKED"));
+            #endif
             break;
-
         case EV_JOINING:
-			#ifdef DEBUG
-            	Serial.println(F("EV_JOINING"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_JOINING"));
+            #endif
             break;
-
         case EV_JOINED:
-			#ifdef DEBUG
-            	Serial.println(F("EV_JOINED"));
-				{
-					u4_t netid = 0;
-					devaddr_t devaddr = 0;
-					u1_t nwkKey[16];
-					u1_t artKey[16];
-					LMIC_getSessionKeys(&netid, &devaddr, nwkKey, artKey);
-					Serial.print("netid: ");
-					Serial.println(netid, DEC);
-					Serial.print("devaddr: ");
-					Serial.println(devaddr, HEX);
-					Serial.print("artKey: ");
-					for (size_t i=0; i<sizeof(artKey); ++i) {
-						if (i != 0)
-						Serial.print("-");
-						Serial.print(artKey[i], HEX);
-					}
-					Serial.println("");
-					Serial.print("nwkKey: ");
-					for (size_t i=0; i<sizeof(nwkKey); ++i) {
-						if (i != 0)
-						Serial.print("-");
-						Serial.print(nwkKey[i], HEX);
-					}
-					Serial.println("");
-				}
-			#endif
-
+            #ifdef DEBUG
+            Serial.println(F("EV_JOINED"));
+            {
+              u4_t netid = 0;
+              devaddr_t devaddr = 0;
+              u1_t nwkKey[16];
+              u1_t artKey[16];
+              LMIC_getSessionKeys(&netid, &devaddr, nwkKey, artKey);
+              Serial.print("netid: ");
+              Serial.println(netid, DEC);
+              Serial.print("devaddr: ");
+              Serial.println(devaddr, HEX);
+              Serial.print("artKey: ");
+              for (size_t i=0; i<sizeof(artKey); ++i) {
+                if (i != 0)
+                  Serial.print("-");
+                  Serial.print(artKey[i], HEX);
+              }
+              Serial.println("");
+              Serial.print("nwkKey: ");
+              for (size_t i=0; i<sizeof(nwkKey); ++i) {
+                 if (i != 0)
+                   Serial.print("-");
+                   Serial.print(nwkKey[i], HEX);
+              }
+              Serial.println("");
+            }
+            #endif
             // Disable link check validation (automatically enabled
             // during join, but because slow data rates change max TX
             // size, we don't use it in this example.
             LMIC_setLinkCheckMode(0);
             break;
-        
         case EV_JOIN_FAILED:
-			#ifdef DEBUG
-            	Serial.println(F("EV_JOIN_FAILED"));
-			#endif 
+            #ifdef DEBUG
+            Serial.println(F("EV_JOIN_FAILED"));
+            #endif
             break;
-
         case EV_REJOIN_FAILED:
-			#ifdef DEBUG
-            	Serial.println(F("EV_REJOIN_FAILED"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_REJOIN_FAILED"));
+            #endif
             break;
-
         case EV_TXCOMPLETE:
-			#ifdef DEBUG
-				Serial.println(F("EV_TXCOMPLETE (includes waiting for RX windows)"));
-
-				if (LMIC.txrxFlags & TXRX_ACK) {
-					Serial.println(F("Received ack"));
-				}
-
-				if (LMIC.dataLen) {
-					Serial.println(F("Received "));
-					Serial.println(LMIC.dataLen);
-					Serial.println(F(" bytes of payload"));
-				}
-				
-				// Standby mode
-				Serial.println(":: now in standby ::");
-				digitalWrite(LED_BUILTIN, LOW);
-			#endif
-
-            // rtc.standbyMode();
-            // and detach USB
-            USB->DEVICE.CTRLA.reg &= ~USB_CTRLA_ENABLE;
+            #ifdef DEBUG
+            Serial.println(F("EV_TXCOMPLETE (includes waiting for RX windows)"));
+            if (LMIC.txrxFlags & TXRX_ACK)
+              Serial.println(F("Received ack"));
+            if (LMIC.dataLen) {
+              Serial.println(F("Received "));
+              Serial.println(LMIC.dataLen);
+              Serial.println(F(" bytes of payload"));
+            }
+            // Standby mode
+            Serial.println(":: now in standby ::");
+            digitalWrite(LED_BUILTIN, LOW);
+            // rtc.standbyMode() and detach USB
+            //USB->DEVICE.CTRLA.reg &= ~USB_CTRLA_ENABLE;
+            #endif
              __WFI();
-
-            // Return from Standby
-            // and re-attach USB
-            USB->DEVICE.CTRLA.reg |= USB_CTRLA_ENABLE;
-
-			#ifdef DEBUG
-				Serial.println("");
-				Serial.println(":: waking up from standby ::");
-				digitalWrite(LED_BUILTIN, HIGH);
-			#endif
-
+            // Return from Standby and re-attach USB
+            #ifdef DEBUG
+            //USB->DEVICE.CTRLA.reg |= USB_CTRLA_ENABLE;
+            Serial.println("");
+            Serial.println(":: waking up from standby ::");
+            digitalWrite(LED_BUILTIN, HIGH);
+            #endif
             // Schedule next transmission
             do_send(&sendjob);
             break;
-
         case EV_LOST_TSYNC:
-			#ifdef DEBUG
-            	Serial.println(F("EV_LOST_TSYNC"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_LOST_TSYNC"));
+            #endif
             break;
-
         case EV_RESET:
-			#ifdef DEBUG
-				Serial.println(F("EV_RESET"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_RESET"));
+            #endif
             break;
-
         case EV_RXCOMPLETE:
-			#ifdef DEBUG
-            	// data received in ping slot
-            	Serial.println(F("EV_RXCOMPLETE"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_RXCOMPLETE"));
+            #endif
             break;
-
         case EV_LINK_DEAD:
-			#ifdef DEBUG
-            	Serial.println(F("EV_LINK_DEAD"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_LINK_DEAD"));
+            #endif
             break;
-
         case EV_LINK_ALIVE:
-			#ifdef DEBUG
-            	Serial.println(F("EV_LINK_ALIVE"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_LINK_ALIVE"));
+            #endif
             break;
-
         case EV_TXSTART:
-			#ifdef DEBUG
-            	Serial.println(F("EV_TXSTART"));
-			#endif
+            #ifdef DEBUG
+            Serial.println(F("EV_TXSTART"));
+            #endif
             break;
-
         default:
-			#ifdef DEBUG
-				Serial.print(F("Unknown event: "));
-				Serial.println((unsigned) ev);
-			#endif
+            #ifdef DEBUG
+            Serial.print(F("Unknown event: "));
+            Serial.println((unsigned) ev);
+            #endif
             break;
     }
 }
@@ -261,9 +230,9 @@ void onEvent (ev_t ev) {
 void do_send(osjob_t* j){
     // Check if there is not a current TX/RX job running
     if (LMIC.opmode & OP_TXRXPEND) {
-		#ifdef DEBUG
-        	Serial.println(F("OP_TXRXPEND, not sending"));
-		#endif 
+        #ifdef DEBUG
+        Serial.println(F("OP_TXRXPEND, not sending"));
+        #endif
     } else {
         // PMS start and wait 20s for stable readings
         digitalWrite(pmsRSTpin, HIGH);
@@ -275,19 +244,18 @@ void do_send(osjob_t* j){
         float co2 = CO2Sensor.getCO2();
         float temp = CO2Sensor.getTemperature();
         float rel_hum = CO2Sensor.getHumidity();
-
-		#ifdef DEBUG
-			Serial.print("CO2: ");
-			Serial.print(co2);
-			Serial.println( "ppm");
-			Serial.print("Temp: ");
-			Serial.print(temp);
-			Serial.println(" C");
-			Serial.print("Humidity: ");
-			Serial.print(rel_hum);
-			Serial.println(" \%");
+        #ifdef DEBUG
+        Serial.print("CO2: ");
+        Serial.print(co2);
+        Serial.println( "ppm");
+        Serial.print("Temp: ");
+        Serial.print(temp);
+        Serial.println(" C");
+        Serial.print("Humidity: ");
+        Serial.print(rel_hum);
+        Serial.println(" \%");
         #endif
-
+        
         // convert payload for CO2, temp, humidity
         uint32_t co2_conv = (uint32_t)(co2 * 100);
         // payload byte array
@@ -306,24 +274,22 @@ void do_send(osjob_t* j){
         
         // collect PMS values
         pms.requestRead();
-        if (pms.readUntil(data, 2000)) {
-			#ifdef DEBUG
-				Serial.print("PM 2.5 (ug/m3): ");
-				Serial.println(data.PM_AE_UG_2_5);
-			#endif
+        if (pms.readUntil(data)) {
+          #ifdef DEBUG
+          Serial.print("PM 2.5 (ug/m3): ");
+          Serial.println(data.PM_AE_UG_2_5);
+          #endif
+          uint16_t pm2_5 = data.PM_AE_UG_2_5;
+          payload[8] = pm2_5 >> 8;
+          payload[9] = pm2_5 & 0xFF;
 
-          	uint16_t pm2_5 = data.PM_AE_UG_2_5;
-          	payload[8] = pm2_5 >> 8;
-          	payload[9] = pm2_5 & 0xFF;
-
-			#ifdef DEBUG
-				Serial.print("PM 10.0 (ug/m3): ");
-				Serial.println(data.PM_AE_UG_10_0);
-		  	#endif
-
-          	uint16_t pm10 = data.PM_AE_UG_10_0;
-          	payload[10] = pm10 >> 8;
-          	payload[11] = pm10 & 0xFF;
+          #ifdef DEBUG
+          Serial.print("PM 10.0 (ug/m3): ");
+          Serial.println(data.PM_AE_UG_10_0);
+          #endif
+          uint16_t pm10 = data.PM_AE_UG_10_0;
+          payload[10] = pm10 >> 8;
+          payload[11] = pm10 & 0xFF;
         }
         digitalWrite(pmsRSTpin, LOW);
         
@@ -335,28 +301,29 @@ void do_send(osjob_t* j){
 // MCU setup
 void setup() {
     delay(1000);
+    #ifdef DEBUG
     //while (! Serial);
-
-	#ifdef DEBUG
-	    Serial.begin(115200);
-    	Serial.println(F("Starting sbox0 \\m/"));
-
-		// turn off LED on pin 13
-    	digitalWrite(LED_BUILTIN, HIGH);
-	#endif
+    Serial.begin(115200);
+    Serial.println(F("Starting sbox0 \\m/"));
+    // turn off LED on pin 13
+    digitalWrite(LED_BUILTIN, HIGH);
+    #else
+    digitalWrite(LED_BUILTIN, LOW);
+    USB->DEVICE.CTRLA.reg &= ~USB_CTRLA_ENABLE;
+    #endif
     
     // Serial1 for PM sensor
     Serial1.begin(9600);
+    pms.passiveMode();
     // PMS RST pin
     pinMode(pmsRSTpin, OUTPUT);
-    pms.passiveMode();
     digitalWrite(pmsRSTpin, LOW);
     
     // start CO2 + temp + humidity sensors
     Wire.begin();
     CO2Sensor.begin();
     CO2Sensor.setAutoSelfCalibration(1);    // turn on self-calibration
-    CO2Sensor.setMeasurementInterval(20);   // in seconds, FIXME!
+    CO2Sensor.setMeasurementInterval(60);   // in seconds, FIXME!
     CO2Sensor.setAltitudeCompensation(174); // in meters
     CO2Sensor.setAmbientPressure(835);      // in mBar
     CO2Sensor.readMeasurement();
@@ -370,7 +337,7 @@ void setup() {
     // Set the data rate to Spreading Factor 7.  This is the fastest supported rate for 125 kHz channels, and it
     // minimizes air time and battery power. 
     // Set the transmission power: 14 dBi (25 mW)
-    LMIC_setDrTxpow(DR_SF7,14);
+    LMIC_setDrTxpow(DR_SF7,0);
     // in the US, with TTN, it saves join time if we start on subband 1 (channels 8-15)
     LMIC_selectSubBand(1);
     // Start job (sending automatically starts OTAA)
