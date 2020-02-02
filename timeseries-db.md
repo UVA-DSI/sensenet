@@ -38,11 +38,15 @@ Observations:
 For queries, we can use the API or the influxdb client:
 
 ```
-influx -host example.org -port 8086 -ssl -username -p
+influx -host example.org -port 8086 -ssl -username $USER -p YOURPASSWD
 ```
 
 If self-signed certificates are being used, add '-unsafeSsl'.
- 
+You can also display timestamps in RFC-3339 format by adding '-precision rfc3339'. 
+The date-time will be conveniently displayed in [Gregogirian format / UTC](https://www.ietf.org/rfc/rfc3339.txt). 
+
+
+
 ## Basic command list
 
 To list existing databases:
@@ -54,26 +58,56 @@ show databases
 To select a particular database:
 
 ```
-use databasename
+use $DATABASENAME 
 ```
 
-To list existing 'measurements' (e.g. sensorbox /sbox0):
+To list existing 'measurements' (e.g. particular type of sensor):
 
 ```
 show measurements
 ```
 
-To query for all the measurements on a specific device:
+To query for the whole time series of a measurement:
 
 ```
-select * from sbox1
+select * from temp_sensor 
 ```
+
+To insert a data point:
+
+```
+insert $MEASUREMENT metric_a=0.1, metric_b=1.90 
+```
+
+Field data types cannot be changed after they are entered for the
+first time. To update any db entry, use the same timestamp with 
+the 'insert' statement:
+
+```
+insert $MEASUREMENT metric_a=0.1, metric_b=1i ('i' stands for int) $ORIGINAL_TIMESTAMP
+```
+
+To delete data points from a particular period of time, use:
+
+```
+delete from $MEASUREMENT where time < or > or = ($TIME_IN_UNIX_EPOCH or "2020-02-01")
+```
+
+Another convenient way of pulling data is using a IPython notebook and/or performing
+a HTTP request with 'curl' to obtain a CSV file. You can request the whole time series
+or select, for example, the past 2 days of data:
+
+```
+curl -H "Accept: application/csv" -G 'https://$YOURSERVER:8086/query' --insecure --data-urlencode "db=$YOUR_DB" -u "$USER:PASSWD" --data-urlencode "q=select * from \"sensenet-test\" where time >= now() - 2d" > db-dump.csv
+```
+
+For more info, check out the [query language documentation](https://docs.influxdata.com/influxdb/v1.7/query_language/database_management).
 
 ## TODO
 
-* Complete the documentation
+* Improve the documentation
 * Complete 'ansible' playbooks
 * Test alternatives to 'Influx DB' (given its proprietary HA components)
 
 ---
-Sign-off: LFRM, 07-14-2019
+Sign-off: LFRM, 02-02-2019
