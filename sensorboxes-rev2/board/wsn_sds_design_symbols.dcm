@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SiP32431DR3
+D 10 pA, Ultra Low Leakage and Quiescent Current, Load Switch with Reverse Blocking, High Enable, SC-70-6
+K Load switch
+F http://www.vishay.com.hk/docs/66597/sip32431.pdf
+$ENDCMP
+#
+$CMP SiP32432DR3
+D 10 pA, Ultra Low Leakage and Quiescent Current, Load Switch with Reverse Blocking, Low Enable, SC-70-6
+K Load switch
+F http://www.vishay.com.hk/docs/66597/sip32431.pdf
+$ENDCMP
+#
+#End Doc Library
