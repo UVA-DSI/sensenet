@@ -223,9 +223,7 @@ Wire Wire Line
 	3050 2500 3050 2150
 Wire Wire Line
 	2800 2750 2800 2700
-Wire Wire Line
-	4350 1900 4900 1900
-Text Label 4900 1900 0    50   ~ 0
+Text Label 5850 1900 0    50   ~ 0
 5V
 Wire Wire Line
 	3200 4050 3200 4150
@@ -396,10 +394,6 @@ Wire Wire Line
 Wire Wire Line
 	4800 3900 4800 3800
 Connection ~ 4800 3800
-Wire Wire Line
-	4800 3800 4950 3800
-Text Label 4950 3800 0    50   ~ 0
-3V3
 $Comp
 L wsn_sds_design_symbols:MCP1812xT-xOT U?
 U 1 1 5E602278
@@ -560,7 +554,7 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	1    8400 5050
 	1    0    0    -1  
 $EndComp
-Text Notes 5050 2800 0    50   ~ 0
+Text Notes 4750 2800 0    50   ~ 0
 for sensors
 Wire Wire Line
 	4300 5950 5050 5950
@@ -568,4 +562,257 @@ Text Label 5050 5950 0    50   ~ 0
 3V3
 Text Notes 5050 6150 0    50   ~ 0
 for MCU & radio
+$Comp
+L wsn_sds_design_symbols:SiP32431DR3 U?
+U 1 1 5E47C799
+P 6500 2000
+F 0 "U?" H 6500 2367 50  0000 C CNN
+F 1 "SiP32431DR3" H 6500 2276 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 6500 2450 50  0001 C CNN
+F 3 "http://www.vishay.com.hk/docs/66597/sip32431.pdf" H 6500 2000 50  0001 C CNN
+	1    6500 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5E493B31
+P 6000 1650
+F 0 "C?" H 6115 1696 50  0000 L CNN
+F 1 "C" H 6115 1605 50  0000 L CNN
+F 2 "" H 6038 1500 50  0001 C CNN
+F 3 "~" H 6000 1650 50  0001 C CNN
+	1    6000 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E493B37
+P 6000 1400
+F 0 "#PWR?" H 6000 1150 50  0001 C CNN
+F 1 "GND" H 6005 1227 50  0000 C CNN
+F 2 "" H 6000 1400 50  0001 C CNN
+F 3 "" H 6000 1400 50  0001 C CNN
+	1    6000 1400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6000 1400 6000 1500
+Wire Wire Line
+	6000 1800 6000 1900
+Connection ~ 6000 1900
+$Comp
+L power:GND #PWR?
+U 1 1 5E49D6C8
+P 6500 2350
+F 0 "#PWR?" H 6500 2100 50  0001 C CNN
+F 1 "GND" H 6505 2177 50  0000 C CNN
+F 2 "" H 6500 2350 50  0001 C CNN
+F 3 "" H 6500 2350 50  0001 C CNN
+	1    6500 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 2350 6500 2300
+$Comp
+L Device:R R?
+U 1 1 5E4A3212
+P 7000 2150
+F 0 "R?" H 7070 2196 50  0000 L CNN
+F 1 "R" H 7070 2105 50  0000 L CNN
+F 2 "" V 6930 2150 50  0001 C CNN
+F 3 "~" H 7000 2150 50  0001 C CNN
+	1    7000 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5E4A4C41
+P 6900 1650
+F 0 "C?" H 7015 1696 50  0000 L CNN
+F 1 "C" H 7015 1605 50  0000 L CNN
+F 2 "" H 6938 1500 50  0001 C CNN
+F 3 "~" H 6900 1650 50  0001 C CNN
+	1    6900 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E4A4C47
+P 6900 1400
+F 0 "#PWR?" H 6900 1150 50  0001 C CNN
+F 1 "GND" H 6905 1227 50  0000 C CNN
+F 2 "" H 6900 1400 50  0001 C CNN
+F 3 "" H 6900 1400 50  0001 C CNN
+	1    6900 1400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6900 1400 6900 1500
+Wire Wire Line
+	6900 1800 6900 1900
+Wire Wire Line
+	6900 1900 6800 1900
+Wire Wire Line
+	6900 1900 7000 1900
+Connection ~ 6900 1900
+Text Label 7000 1900 0    50   ~ 0
+sensor
+Wire Wire Line
+	7000 2000 7000 1900
+$Comp
+L power:GND #PWR?
+U 1 1 5E4AFA34
+P 7000 2350
+F 0 "#PWR?" H 7000 2100 50  0001 C CNN
+F 1 "GND" H 7005 2177 50  0000 C CNN
+F 2 "" H 7000 2350 50  0001 C CNN
+F 3 "" H 7000 2350 50  0001 C CNN
+	1    7000 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 2350 7000 2300
+$Comp
+L Device:C C?
+U 1 1 5E4BF54C
+P 6000 3550
+F 0 "C?" H 6115 3596 50  0000 L CNN
+F 1 "C" H 6115 3505 50  0000 L CNN
+F 2 "" H 6038 3400 50  0001 C CNN
+F 3 "~" H 6000 3550 50  0001 C CNN
+	1    6000 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E4BF552
+P 6000 3300
+F 0 "#PWR?" H 6000 3050 50  0001 C CNN
+F 1 "GND" H 6005 3127 50  0000 C CNN
+F 2 "" H 6000 3300 50  0001 C CNN
+F 3 "" H 6000 3300 50  0001 C CNN
+	1    6000 3300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6000 3300 6000 3400
+Wire Wire Line
+	6000 3700 6000 3800
+$Comp
+L power:GND #PWR?
+U 1 1 5E4BF55D
+P 6500 4250
+F 0 "#PWR?" H 6500 4000 50  0001 C CNN
+F 1 "GND" H 6505 4077 50  0000 C CNN
+F 2 "" H 6500 4250 50  0001 C CNN
+F 3 "" H 6500 4250 50  0001 C CNN
+	1    6500 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 4250 6500 4200
+$Comp
+L Device:R R?
+U 1 1 5E4BF564
+P 7000 4050
+F 0 "R?" H 7070 4096 50  0000 L CNN
+F 1 "R" H 7070 4005 50  0000 L CNN
+F 2 "" V 6930 4050 50  0001 C CNN
+F 3 "~" H 7000 4050 50  0001 C CNN
+	1    7000 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5E4BF56A
+P 6900 3550
+F 0 "C?" H 7015 3596 50  0000 L CNN
+F 1 "C" H 7015 3505 50  0000 L CNN
+F 2 "" H 6938 3400 50  0001 C CNN
+F 3 "~" H 6900 3550 50  0001 C CNN
+	1    6900 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E4BF570
+P 6900 3300
+F 0 "#PWR?" H 6900 3050 50  0001 C CNN
+F 1 "GND" H 6905 3127 50  0000 C CNN
+F 2 "" H 6900 3300 50  0001 C CNN
+F 3 "" H 6900 3300 50  0001 C CNN
+	1    6900 3300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6900 3300 6900 3400
+Wire Wire Line
+	6900 3700 6900 3800
+Wire Wire Line
+	6900 3800 6800 3800
+Wire Wire Line
+	6900 3800 7000 3800
+Connection ~ 6900 3800
+Text Label 7000 3800 0    50   ~ 0
+sensor
+Wire Wire Line
+	7000 3900 7000 3800
+$Comp
+L power:GND #PWR?
+U 1 1 5E4BF57D
+P 7000 4250
+F 0 "#PWR?" H 7000 4000 50  0001 C CNN
+F 1 "GND" H 7005 4077 50  0000 C CNN
+F 2 "" H 7000 4250 50  0001 C CNN
+F 3 "" H 7000 4250 50  0001 C CNN
+	1    7000 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 4250 7000 4200
+Text Label 5800 3800 0    50   ~ 0
+3V3
+Connection ~ 6000 3800
+Wire Wire Line
+	4350 1900 6000 1900
+Wire Wire Line
+	4800 3800 6000 3800
+$Comp
+L wsn_sds_design_symbols:SiP32431DR3 U?
+U 1 1 5E4BF546
+P 6500 3900
+F 0 "U?" H 6500 4267 50  0000 C CNN
+F 1 "SiP32431DR3" H 6500 4176 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 6500 4350 50  0001 C CNN
+F 3 "http://www.vishay.com.hk/docs/66597/sip32431.pdf" H 6500 3900 50  0001 C CNN
+	1    6500 3900
+	1    0    0    -1  
+$EndComp
+Entry Wire Line
+	5600 3500 5700 3600
+Wire Wire Line
+	5700 3600 5700 3900
+Entry Wire Line
+	5900 2400 6000 2300
+Wire Wire Line
+	6000 2300 6000 2000
+Wire Bus Line
+	5900 2400 5600 2400
+Text Notes 5600 2950 0    50   ~ 0
+MCU control signals
+Wire Bus Line
+	5600 2400 5600 2950
+Wire Bus Line
+	5600 2950 5800 2950
+Connection ~ 5600 2950
+Wire Bus Line
+	5600 2950 5600 3500
+Wire Wire Line
+	6000 1900 6200 1900
+Wire Wire Line
+	6000 2000 6200 2000
+Wire Wire Line
+	6000 3800 6200 3800
+Wire Wire Line
+	5700 3900 6200 3900
 $EndSCHEMATC
