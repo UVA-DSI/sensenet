@@ -269,110 +269,6 @@ Text Notes 4300 2450 0    50   ~ 0
 configuration of power management,\nvbat_status divided down yields each threshold, which is compared against internal references.
 Text GLabel 3400 800  0    50   Input ~ 0
 VBAT_STATUS
-Text Notes 6700 4200 0    50   ~ 0
-MCU\n
-Connection ~ 5400 4200
-Wire Wire Line
-	5050 3200 5650 3200
-Connection ~ 5050 3200
-Wire Wire Line
-	5050 4200 5400 4200
-Wire Wire Line
-	5050 3200 5050 4200
-Wire Wire Line
-	4950 3300 5650 3300
-Connection ~ 4950 3300
-Wire Wire Line
-	4950 4300 5550 4300
-Wire Wire Line
-	4950 4300 4950 3300
-Connection ~ 6500 4200
-Wire Wire Line
-	6500 4200 6700 4200
-Wire Wire Line
-	6350 4200 6500 4200
-$Comp
-L Device:C C?
-U 1 1 5E779658
-P 6500 4450
-F 0 "C?" H 6615 4496 50  0000 L CNN
-F 1 "C" H 6615 4405 50  0000 L CNN
-F 2 "" H 6538 4300 50  0001 C CNN
-F 3 "~" H 6500 4450 50  0001 C CNN
-	1    6500 4450
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	6500 4200 6500 4300
-$Comp
-L power:GND #PWR?
-U 1 1 5E779651
-P 6500 4700
-F 0 "#PWR?" H 6500 4450 50  0001 C CNN
-F 1 "GND" H 6505 4527 50  0000 C CNN
-F 2 "" H 6500 4700 50  0001 C CNN
-F 3 "" H 6500 4700 50  0001 C CNN
-	1    6500 4700
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	6500 4700 6500 4600
-$Comp
-L Device:C C?
-U 1 1 5E76B321
-P 5400 3950
-F 0 "C?" H 5515 3996 50  0000 L CNN
-F 1 "C" H 5515 3905 50  0000 L CNN
-F 2 "" H 5438 3800 50  0001 C CNN
-F 3 "~" H 5400 3950 50  0001 C CNN
-	1    5400 3950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5550 4200 5400 4200
-Wire Wire Line
-	5400 4200 5400 4100
-$Comp
-L power:GND #PWR?
-U 1 1 5E771201
-P 5400 3700
-F 0 "#PWR?" H 5400 3450 50  0001 C CNN
-F 1 "GND" H 5405 3527 50  0000 C CNN
-F 2 "" H 5400 3700 50  0001 C CNN
-F 3 "" H 5400 3700 50  0001 C CNN
-	1    5400 3700
-	1    0    0    1   
-$EndComp
-Wire Wire Line
-	5400 3700 5400 3800
-Wire Wire Line
-	5950 4700 5950 4600
-$Comp
-L power:GND #PWR?
-U 1 1 5E769ACD
-P 5950 4700
-F 0 "#PWR?" H 5950 4450 50  0001 C CNN
-F 1 "GND" H 5955 4527 50  0000 C CNN
-F 2 "" H 5950 4700 50  0001 C CNN
-F 3 "" H 5950 4700 50  0001 C CNN
-	1    5950 4700
-	-1   0    0    -1  
-$EndComp
-$Comp
-L wsn_sds_design_symbols:MCP1810T-xIOT U?
-U 1 1 5E767F71
-P 5950 4300
-F 0 "U?" H 5950 4642 50  0000 C CNN
-F 1 "MCP1810T-xIOT" H 5950 4551 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23-5" H 5950 4650 50  0001 C CNN
-F 3 "" H 5950 4300 50  0001 C CNN
-	1    5950 4300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4850 3300 4950 3300
-Wire Wire Line
-	4850 3200 5050 3200
 Wire Wire Line
 	4850 3050 4950 3050
 $Sheet
@@ -412,4 +308,43 @@ Wire Wire Line
 	3300 3550 3450 3550
 Wire Wire Line
 	3300 3700 3450 3700
+Wire Wire Line
+	4850 3200 5650 3200
+Wire Wire Line
+	4850 3300 5250 3300
+$Comp
+L Device:R R?
+U 1 1 5E5CC3C0
+P 5250 3550
+AR Path="/5E4C9109/5E5CC3C0" Ref="R?"  Part="1" 
+AR Path="/5E5CC3C0" Ref="R?"  Part="1" 
+F 0 "R?" H 5320 3596 50  0000 L CNN
+F 1 "R" H 5320 3505 50  0000 L CNN
+F 2 "" V 5180 3550 50  0001 C CNN
+F 3 "~" H 5250 3550 50  0001 C CNN
+	1    5250 3550
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E5CC3C6
+P 5250 3750
+AR Path="/5E4C9109/5E5CC3C6" Ref="#PWR?"  Part="1" 
+AR Path="/5E5CC3C6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5250 3500 50  0001 C CNN
+F 1 "GND" H 5255 3577 50  0000 C CNN
+F 2 "" H 5250 3750 50  0001 C CNN
+F 3 "" H 5250 3750 50  0001 C CNN
+	1    5250 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5250 3750 5250 3700
+Wire Wire Line
+	5250 3400 5250 3300
+Connection ~ 5250 3300
+Wire Wire Line
+	5250 3300 5650 3300
+Text Label 5250 3200 0    50   ~ 0
+3V7
 $EndSCHEMATC
