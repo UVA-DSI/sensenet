@@ -1,0 +1,444 @@
+EESchema Schematic File Version 4
+LIBS:wsn-cache
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 8
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_ST_STM32L4:STM32L432KCUx U?
+U 1 1 5E5A2062
+P 3950 3300
+AR Path="/5E4C9109/5E5A2062" Ref="U?"  Part="1" 
+AR Path="/5E4C9109/5E59DFEA/5E5A2062" Ref="U?"  Part="1" 
+F 0 "U?" H 3950 4381 50  0000 C CNN
+F 1 "STM32L432KCUx" H 3950 4290 50  0000 C CNN
+F 2 "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm" H 3550 2400 50  0001 R CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00257205.pdf" H 3950 3300 50  0001 C CNN
+	1    3950 3300
+	1    0    0    -1  
+$EndComp
+Text HLabel 1050 1150 0    50   Input ~ 0
+VDD
+$Comp
+L Device:Ferrite_Bead FB?
+U 1 1 5E5A2F31
+P 4050 2050
+F 0 "FB?" H 4187 2096 50  0000 L CNN
+F 1 "Ferrite_Bead" H 4187 2005 50  0000 L CNN
+F 2 "" V 3980 2050 50  0001 C CNN
+F 3 "~" H 4050 2050 50  0001 C CNN
+	1    4050 2050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4050 2200 4050 2300
+Wire Wire Line
+	4050 1150 3950 1150
+Wire Wire Line
+	3950 2400 3950 1150
+Connection ~ 3950 1150
+Wire Wire Line
+	3950 1150 3850 1150
+Wire Wire Line
+	3850 2400 3850 1150
+Connection ~ 3850 1150
+Wire Wire Line
+	3850 1150 1600 1150
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5E5AE2EF
+P 4050 1550
+F 0 "JP?" V 4004 1618 50  0000 L CNN
+F 1 "SolderJumper_2_Bridged" V 4095 1618 50  0000 L CNN
+F 2 "" H 4050 1550 50  0001 C CNN
+F 3 "~" H 4050 1550 50  0001 C CNN
+	1    4050 1550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4050 1150 4050 1400
+Wire Wire Line
+	4050 1700 4050 1900
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5E5AFBEB
+P 3950 4550
+F 0 "JP?" V 3950 4618 50  0001 L CNN
+F 1 "SolderJumper_2_Bridged" V 3995 4618 50  0001 L CNN
+F 2 "" H 3950 4550 50  0001 C CNN
+F 3 "~" H 3950 4550 50  0001 C CNN
+	1    3950 4550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3950 4400 3950 4300
+$Comp
+L power:GND #PWR?
+U 1 1 5E5B053A
+P 3950 4800
+F 0 "#PWR?" H 3950 4550 50  0001 C CNN
+F 1 "GND" H 3955 4627 50  0000 C CNN
+F 2 "" H 3950 4800 50  0001 C CNN
+F 3 "" H 3950 4800 50  0001 C CNN
+	1    3950 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3950 4800 3950 4750
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5E5B294D
+P 3850 4550
+F 0 "JP?" V 3850 4618 50  0001 L CNN
+F 1 "SolderJumper_2_Bridged" V 3895 4618 50  0001 L CNN
+F 2 "" H 3850 4550 50  0001 C CNN
+F 3 "~" H 3850 4550 50  0001 C CNN
+	1    3850 4550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3850 4400 3850 4300
+Wire Wire Line
+	3850 4700 3850 4750
+Wire Wire Line
+	3850 4750 3950 4750
+Connection ~ 3950 4750
+Wire Wire Line
+	3950 4750 3950 4700
+Wire Wire Line
+	4050 2300 4150 2300
+Connection ~ 4050 2300
+Wire Wire Line
+	4050 2300 4050 2400
+$Comp
+L Device:C C?
+U 1 1 5E5B4995
+P 4300 2300
+F 0 "C?" H 4415 2346 50  0000 L CNN
+F 1 "C" H 4415 2255 50  0000 L CNN
+F 2 "" H 4338 2150 50  0001 C CNN
+F 3 "~" H 4300 2300 50  0001 C CNN
+	1    4300 2300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E5B57E5
+P 4500 2300
+F 0 "#PWR?" H 4500 2050 50  0001 C CNN
+F 1 "GND" H 4505 2127 50  0000 C CNN
+F 2 "" H 4500 2300 50  0001 C CNN
+F 3 "" H 4500 2300 50  0001 C CNN
+	1    4500 2300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4500 2300 4450 2300
+$Comp
+L Device:C C?
+U 1 1 5E5C315D
+P 1200 1350
+F 0 "C?" H 1315 1396 50  0000 L CNN
+F 1 "C" H 1315 1305 50  0000 L CNN
+F 2 "" H 1238 1200 50  0001 C CNN
+F 3 "~" H 1200 1350 50  0001 C CNN
+	1    1200 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1200 1550 1200 1500
+$Comp
+L Device:C C?
+U 1 1 5E5C3FAE
+P 1600 1350
+F 0 "C?" H 1715 1396 50  0000 L CNN
+F 1 "C" H 1715 1305 50  0000 L CNN
+F 2 "" H 1638 1200 50  0001 C CNN
+F 3 "~" H 1600 1350 50  0001 C CNN
+	1    1600 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E5C3FB4
+P 1400 1600
+F 0 "#PWR?" H 1400 1350 50  0001 C CNN
+F 1 "GND" H 1405 1427 50  0000 C CNN
+F 2 "" H 1400 1600 50  0001 C CNN
+F 3 "" H 1400 1600 50  0001 C CNN
+	1    1400 1600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 1550 1600 1500
+Wire Wire Line
+	1600 1200 1600 1150
+Wire Wire Line
+	1200 1200 1200 1150
+Connection ~ 1200 1150
+Wire Wire Line
+	1200 1150 1050 1150
+$Comp
+L Device:C C?
+U 1 1 5E5C72B1
+P 3150 2350
+F 0 "C?" H 3265 2396 50  0000 L CNN
+F 1 "C" H 3265 2305 50  0000 L CNN
+F 2 "" H 3188 2200 50  0001 C CNN
+F 3 "~" H 3150 2350 50  0001 C CNN
+	1    3150 2350
+	1    0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E5C72B7
+P 2950 2000
+F 0 "#PWR?" H 2950 1750 50  0001 C CNN
+F 1 "GND" H 2955 1827 50  0000 C CNN
+F 2 "" H 2950 2000 50  0001 C CNN
+F 3 "" H 2950 2000 50  0001 C CNN
+	1    2950 2000
+	1    0    0    1   
+$EndComp
+$Comp
+L Switch:SW_Push SW?
+U 1 1 5E5C794C
+P 2600 2350
+F 0 "SW?" V 2646 2302 50  0000 R CNN
+F 1 "SW_Push" V 2555 2302 50  0000 R CNN
+F 2 "" H 2600 2550 50  0001 C CNN
+F 3 "~" H 2600 2550 50  0001 C CNN
+	1    2600 2350
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	2600 2550 2600 2600
+Wire Wire Line
+	2600 2600 3150 2600
+Wire Wire Line
+	2600 2150 2600 2100
+Wire Wire Line
+	2950 2000 2950 2100
+Wire Wire Line
+	2950 2100 3150 2100
+Wire Wire Line
+	3150 2100 3150 2200
+Wire Wire Line
+	2600 2100 2950 2100
+Connection ~ 2950 2100
+Wire Wire Line
+	3150 2500 3150 2600
+Connection ~ 3150 2600
+Wire Wire Line
+	3150 2600 3450 2600
+Wire Wire Line
+	3950 4750 4050 4750
+Wire Wire Line
+	4050 4750 4050 4300
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5E5D9329
+P 3200 3000
+F 0 "JP?" V 3200 3068 50  0001 L CNN
+F 1 "SolderJumper_2_Bridged" V 3245 3068 50  0001 L CNN
+F 2 "" H 3200 3000 50  0001 C CNN
+F 3 "~" H 3200 3000 50  0001 C CNN
+	1    3200 3000
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E5D932F
+P 2550 3000
+F 0 "#PWR?" H 2550 2750 50  0001 C CNN
+F 1 "GND" H 2555 2827 50  0000 C CNN
+F 2 "" H 2550 3000 50  0001 C CNN
+F 3 "" H 2550 3000 50  0001 C CNN
+	1    2550 3000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3050 3000 2950 3000
+$Comp
+L Device:R R?
+U 1 1 5E5E20A3
+P 2800 3000
+F 0 "R?" H 2870 3046 50  0000 L CNN
+F 1 "R" H 2870 2955 50  0000 L CNN
+F 2 "" V 2730 3000 50  0001 C CNN
+F 3 "~" H 2800 3000 50  0001 C CNN
+	1    2800 3000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3350 3000 3450 3000
+Wire Wire Line
+	2550 3000 2650 3000
+$Comp
+L Device:Crystal Y?
+U 1 1 5E5EE15F
+P 1950 3750
+F 0 "Y?" H 1950 4018 50  0000 C CNN
+F 1 "Crystal" H 1950 3927 50  0000 C CNN
+F 2 "" H 1950 3750 50  0001 C CNN
+F 3 "~" H 1950 3750 50  0001 C CNN
+	1    1950 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5E5F04D5
+P 1700 4000
+F 0 "C?" H 1815 4046 50  0000 L CNN
+F 1 "C" H 1815 3955 50  0000 L CNN
+F 2 "" H 1738 3850 50  0001 C CNN
+F 3 "~" H 1700 4000 50  0001 C CNN
+	1    1700 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E5F04DB
+P 1700 4200
+F 0 "#PWR?" H 1700 3950 50  0001 C CNN
+F 1 "GND" H 1705 4027 50  0000 C CNN
+F 2 "" H 1700 4200 50  0001 C CNN
+F 3 "" H 1700 4200 50  0001 C CNN
+	1    1700 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 4200 1700 4150
+Connection ~ 1600 1150
+Wire Wire Line
+	1200 1150 1600 1150
+Wire Wire Line
+	1600 1550 1400 1550
+Wire Wire Line
+	1400 1600 1400 1550
+Connection ~ 1400 1550
+Wire Wire Line
+	1400 1550 1200 1550
+Wire Wire Line
+	1800 3750 1700 3750
+Wire Wire Line
+	1700 3750 1700 3850
+$Comp
+L Device:C C?
+U 1 1 5E5FA68F
+P 2200 4000
+F 0 "C?" H 2315 4046 50  0000 L CNN
+F 1 "C" H 2315 3955 50  0000 L CNN
+F 2 "" H 2238 3850 50  0001 C CNN
+F 3 "~" H 2200 4000 50  0001 C CNN
+	1    2200 4000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E5FA695
+P 2200 4200
+F 0 "#PWR?" H 2200 3950 50  0001 C CNN
+F 1 "GND" H 2205 4027 50  0000 C CNN
+F 2 "" H 2200 4200 50  0001 C CNN
+F 3 "" H 2200 4200 50  0001 C CNN
+	1    2200 4200
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2200 4200 2200 4150
+Wire Wire Line
+	2100 3750 2200 3750
+Wire Wire Line
+	2200 3750 2200 3850
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5E5FF1B6
+P 1700 3500
+F 0 "JP?" V 1700 3568 50  0001 L CNN
+F 1 "SolderJumper_2_Bridged" V 1745 3568 50  0001 L CNN
+F 2 "" H 1700 3500 50  0001 C CNN
+F 3 "~" H 1700 3500 50  0001 C CNN
+	1    1700 3500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1700 3650 1700 3750
+Connection ~ 1700 3750
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5E60166F
+P 2200 3500
+F 0 "JP?" V 2200 3568 50  0001 L CNN
+F 1 "SolderJumper_2_Bridged" V 2245 3568 50  0001 L CNN
+F 2 "" H 2200 3500 50  0001 C CNN
+F 3 "~" H 2200 3500 50  0001 C CNN
+	1    2200 3500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2200 3750 2200 3650
+Connection ~ 2200 3750
+Wire Wire Line
+	1700 3200 3450 3200
+Wire Wire Line
+	1700 3200 1700 3350
+Wire Wire Line
+	3450 3300 2200 3300
+Wire Wire Line
+	2200 3300 2200 3350
+Text HLabel 4600 2700 2    50   BiDi ~ 0
+PA1
+Text HLabel 4600 2900 2    50   BiDi ~ 0
+PA3
+Text HLabel 4600 3000 2    50   BiDi ~ 0
+PA4
+Text HLabel 4600 3100 2    50   BiDi ~ 0
+PA5
+Text HLabel 4600 3200 2    50   BiDi ~ 0
+PA6
+Text HLabel 4600 3300 2    50   BiDi ~ 0
+PA7
+Text HLabel 4600 3400 2    50   BiDi ~ 0
+PA8
+Text HLabel 4600 3500 2    50   BiDi ~ 0
+PA9
+Text HLabel 4600 3600 2    50   BiDi ~ 0
+PA10
+Text HLabel 4600 3700 2    50   BiDi ~ 0
+PA11
+Text HLabel 4600 3800 2    50   BiDi ~ 0
+PA12
+Wire Wire Line
+	4450 2700 4600 2700
+Wire Wire Line
+	4450 2900 4600 2900
+Wire Wire Line
+	4450 3000 4600 3000
+Wire Wire Line
+	4450 3100 4600 3100
+Wire Wire Line
+	4450 3200 4600 3200
+Wire Wire Line
+	4450 3300 4600 3300
+Wire Wire Line
+	4450 3400 4600 3400
+Wire Wire Line
+	4600 3500 4450 3500
+Wire Wire Line
+	4450 3600 4600 3600
+Wire Wire Line
+	4450 3700 4600 3700
+Wire Wire Line
+	4450 3800 4600 3800
+$EndSCHEMATC
