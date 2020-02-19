@@ -913,4 +913,10 @@ Text Label 1300 7600 0    50   ~ 0
 RADIO_ANT_EN
 Wire Wire Line
 	1300 7600 1700 7600
+Text Notes 2150 2500 0    50   ~ 0
+alternative: PFET
+Text Notes 2750 6900 0    50   ~ 0
+ST LINK power in here?
+Text Notes 3950 6950 0    50   ~ 0
+or overriding the LDO power?
 $EndSCHEMATC
