@@ -17,12 +17,12 @@ $EndDescr
 $Comp
 L Device:Solar_Cell SC?
 U 1 1 5E4F1943
-P 950 3750
-F 0 "SC?" H 1058 3846 50  0000 L CNN
-F 1 "Solar_Cell" H 1058 3755 50  0000 L CNN
-F 2 "" V 950 3810 50  0001 C CNN
-F 3 "~" V 950 3810 50  0001 C CNN
-	1    950  3750
+P -800 3750
+F 0 "SC?" H -692 3846 50  0000 L CNN
+F 1 "Solar_Cell" H -692 3755 50  0000 L CNN
+F 2 "" V -800 3810 50  0001 C CNN
+F 3 "~" V -800 3810 50  0001 C CNN
+	1    -800 3750
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -40,18 +40,18 @@ $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5E5E0597
-P 950 4350
-F 0 "#PWR?" H 950 4100 50  0001 C CNN
-F 1 "GND" H 955 4177 50  0000 C CNN
-F 2 "" H 950 4350 50  0001 C CNN
-F 3 "" H 950 4350 50  0001 C CNN
-	1    950  4350
+P -800 4350
+F 0 "#PWR?" H -800 4100 50  0001 C CNN
+F 1 "GND" H -795 4177 50  0000 C CNN
+F 2 "" H -800 4350 50  0001 C CNN
+F 3 "" H -800 4350 50  0001 C CNN
+	1    -800 4350
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	950  4350 950  3850
+	-800 4350 -800 3850
 Wire Wire Line
-	950  3550 950  3450
+	-800 3550 -800 3450
 $Comp
 L power:GND #PWR?
 U 1 1 5E621AA6
@@ -400,7 +400,7 @@ P 4750 4500
 AR Path="/5E4C8A07/5E4F2A6B" Ref="R?"  Part="1" 
 AR Path="/5E4F2A6B" Ref="R?"  Part="1" 
 F 0 "R?" H 4820 4546 50  0000 L CNN
-F 1 "R" H 4820 4455 50  0000 L CNN
+F 1 "10M" H 4820 4455 50  0000 L CNN
 F 2 "" V 4680 4500 50  0001 C CNN
 F 3 "~" H 4750 4500 50  0001 C CNN
 	1    4750 4500
@@ -474,7 +474,6 @@ Wire Wire Line
 	4750 4300 6750 4300
 Wire Wire Line
 	3200 4300 4100 4300
-Connection ~ 4100 2000
 Wire Wire Line
 	4450 3000 4450 2900
 Wire Wire Line
@@ -484,7 +483,6 @@ Wire Wire Line
 	4750 2400 4450 2400
 Wire Wire Line
 	4750 2350 4750 2400
-Connection ~ 4750 2000
 Wire Wire Line
 	4750 2050 4750 2000
 $Comp
@@ -494,7 +492,7 @@ P 4750 2200
 AR Path="/5E4C8A07/5E511817" Ref="R?"  Part="1" 
 AR Path="/5E511817" Ref="R?"  Part="1" 
 F 0 "R?" H 4820 2246 50  0000 L CNN
-F 1 "R" H 4820 2155 50  0000 L CNN
+F 1 "10M" H 4820 2155 50  0000 L CNN
 F 2 "" V 4680 2200 50  0001 C CNN
 F 3 "~" H 4750 2200 50  0001 C CNN
 	1    4750 2200
@@ -519,8 +517,6 @@ Wire Wire Line
 	4100 2700 4150 2700
 Wire Wire Line
 	4450 2300 4450 2400
-Wire Wire Line
-	4100 2000 4250 2000
 Wire Wire Line
 	4100 2150 4100 2000
 $Comp
@@ -565,173 +561,326 @@ $EndComp
 Wire Wire Line
 	4650 2000 4750 2000
 Wire Wire Line
-	4750 2000 6750 2000
-Wire Wire Line
-	3200 2000 4100 2000
-Wire Wire Line
-	950  3450 1150 3450
+	-800 3450 -400 3450
 $Comp
 L Device:Q_PMOS_DGS Q?
 U 1 1 5E536348
-P 1350 3550
+P -200 3550
 AR Path="/5E4C83A3/5E536348" Ref="Q?"  Part="1" 
 AR Path="/5E536348" Ref="Q?"  Part="1" 
-F 0 "Q?" V 1693 3550 50  0000 C CNN
-F 1 "Q_PMOS_DGS" V 1602 3550 50  0000 C CNN
-F 2 "" H 1550 3650 50  0001 C CNN
-F 3 "~" H 1350 3550 50  0001 C CNN
-	1    1350 3550
+F 0 "Q?" V 143 3550 50  0000 C CNN
+F 1 "Q_PMOS_DGS" V 52  3550 50  0000 C CNN
+F 2 "" H 0   3650 50  0001 C CNN
+F 3 "~" H -200 3550 50  0001 C CNN
+	1    -200 3550
 	0    -1   -1   0   
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5E53634E
-P 1350 4350
+P -200 4350
 AR Path="/5E4C83A3/5E53634E" Ref="#PWR?"  Part="1" 
 AR Path="/5E53634E" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 1350 4100 50  0001 C CNN
-F 1 "GND" H 1355 4177 50  0000 C CNN
-F 2 "" H 1350 4350 50  0001 C CNN
-F 3 "" H 1350 4350 50  0001 C CNN
-	1    1350 4350
+F 0 "#PWR?" H -200 4100 50  0001 C CNN
+F 1 "GND" H -195 4177 50  0000 C CNN
+F 2 "" H -200 4350 50  0001 C CNN
+F 3 "" H -200 4350 50  0001 C CNN
+	1    -200 4350
 	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Q_PMOS_DGS Q?
-U 1 1 5E536354
-P 2250 3650
-AR Path="/5E4C83A3/5E536354" Ref="Q?"  Part="1" 
-AR Path="/5E536354" Ref="Q?"  Part="1" 
-F 0 "Q?" V 2593 3650 50  0000 C CNN
-F 1 "Q_PMOS_DGS" V 2502 3650 50  0000 C CNN
-F 2 "" H 2450 3750 50  0001 C CNN
-F 3 "~" H 2250 3650 50  0001 C CNN
-	1    2250 3650
-	0    1    -1   0   
 $EndComp
 $Comp
 L Device:D_Zener D?
 U 1 1 5E53635A
-P 1750 4100
+P 550 4100
 AR Path="/5E4C83A3/5E53635A" Ref="D?"  Part="1" 
 AR Path="/5E53635A" Ref="D?"  Part="1" 
-F 0 "D?" H 1750 4316 50  0000 C CNN
-F 1 "5V" H 1750 4225 50  0000 C CNN
-F 2 "" H 1750 4100 50  0001 C CNN
-F 3 "~" H 1750 4100 50  0001 C CNN
-	1    1750 4100
+F 0 "D?" H 550 4316 50  0000 C CNN
+F 1 "5V" H 550 4225 50  0000 C CNN
+F 2 "" H 550 4100 50  0001 C CNN
+F 3 "~" H 550 4100 50  0001 C CNN
+	1    550  4100
 	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R?
 U 1 1 5E536360
-P 1750 3700
+P 550 3700
 AR Path="/5E4C83A3/5E536360" Ref="R?"  Part="1" 
 AR Path="/5E536360" Ref="R?"  Part="1" 
-F 0 "R?" H 1680 3654 50  0000 R CNN
-F 1 "180k" H 1680 3745 50  0000 R CNN
-F 2 "" V 1680 3700 50  0001 C CNN
-F 3 "~" H 1750 3700 50  0001 C CNN
-	1    1750 3700
+F 0 "R?" H 480 3654 50  0000 R CNN
+F 1 "120k" H 480 3745 50  0000 R CNN
+F 2 "" V 480 3700 50  0001 C CNN
+F 3 "~" H 550 3700 50  0001 C CNN
+	1    550  3700
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	1750 3550 1750 3450
-Wire Wire Line
-	1750 3450 1550 3450
-Wire Wire Line
-	1350 3750 1350 4350
+	550  3550 550  3450
 $Comp
 L power:GND #PWR?
 U 1 1 5E536369
-P 1750 4350
+P 550 4350
 AR Path="/5E4C83A3/5E536369" Ref="#PWR?"  Part="1" 
 AR Path="/5E536369" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 1750 4100 50  0001 C CNN
-F 1 "GND" H 1755 4177 50  0000 C CNN
-F 2 "" H 1750 4350 50  0001 C CNN
-F 3 "" H 1750 4350 50  0001 C CNN
-	1    1750 4350
+F 0 "#PWR?" H 550 4100 50  0001 C CNN
+F 1 "GND" H 555 4177 50  0000 C CNN
+F 2 "" H 550 4350 50  0001 C CNN
+F 3 "" H 550 4350 50  0001 C CNN
+	1    550  4350
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1750 4350 1750 4250
-Connection ~ 1750 3450
+	550  4350 550  4250
+Wire Wire Line
+	5600 2100 5600 3450
+Wire Wire Line
+	2600 3450 5600 3450
+Connection ~ 5600 3450
+Wire Wire Line
+	5600 3450 5600 4400
+Text Notes -400 3000 0    50   ~ 0
+need  <8V gate-source zener clamp to prevent mosfet destruction\n\nmin zener current for stabilization * Resistor + Vzener = threshold?
+Text Notes -500 4900 0    50   ~ 0
+reverse polarity clamp should activate at 5.5V, overvoltage protection should activate at 5.1V
 $Comp
-L Device:Q_PMOS_DGS Q?
-U 1 1 5E536371
-P 2750 3550
-AR Path="/5E4C83A3/5E536371" Ref="Q?"  Part="1" 
-AR Path="/5E536371" Ref="Q?"  Part="1" 
-F 0 "Q?" V 3093 3550 50  0000 C CNN
-F 1 "Q_PMOS_DGS" V 3002 3550 50  0000 C CNN
-F 2 "" H 2950 3650 50  0001 C CNN
-F 3 "~" H 2750 3550 50  0001 C CNN
-	1    2750 3550
-	0    -1   -1   0   
+L Device:D_Zener D?
+U 1 1 5E4DC5A2
+P 150 3700
+AR Path="/5E4C83A3/5E4DC5A2" Ref="D?"  Part="1" 
+AR Path="/5E4DC5A2" Ref="D?"  Part="1" 
+F 0 "D?" H 150 3916 50  0000 C CNN
+F 1 "5V" H 150 3825 50  0000 C CNN
+F 2 "" H 150 3700 50  0001 C CNN
+F 3 "~" H 150 3700 50  0001 C CNN
+	1    150  3700
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R?
-U 1 1 5E536377
-P 2750 4100
-AR Path="/5E4C83A3/5E536377" Ref="R?"  Part="1" 
-AR Path="/5E536377" Ref="R?"  Part="1" 
-F 0 "R?" H 2680 4054 50  0000 R CNN
-F 1 "R" H 2680 4145 50  0000 R CNN
-F 2 "" V 2680 4100 50  0001 C CNN
-F 3 "~" H 2750 4100 50  0001 C CNN
-	1    2750 4100
+U 1 1 5E4E9E5B
+P -200 4100
+AR Path="/5E4C83A3/5E4E9E5B" Ref="R?"  Part="1" 
+AR Path="/5E4E9E5B" Ref="R?"  Part="1" 
+F 0 "R?" H -270 4054 50  0000 R CNN
+F 1 "470k" H -270 4145 50  0000 R CNN
+F 2 "" V -270 4100 50  0001 C CNN
+F 3 "~" H -200 4100 50  0001 C CNN
+	1    -200 4100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	150  3550 150  3450
+Connection ~ 150  3450
+Wire Wire Line
+	150  3450 0    3450
+Wire Wire Line
+	-200 3900 150  3900
+Wire Wire Line
+	150  3900 150  3850
+Wire Wire Line
+	-200 3750 -200 3900
+Wire Wire Line
+	-200 3900 -200 3950
+Connection ~ -200 3900
+Wire Wire Line
+	-200 4250 -200 4350
+Wire Wire Line
+	150  3450 550  3450
+Connection ~ 550  3450
+$Comp
+L Device:R R?
+U 1 1 5E55D7F8
+P 950 3900
+AR Path="/5E4C83A3/5E55D7F8" Ref="R?"  Part="1" 
+AR Path="/5E55D7F8" Ref="R?"  Part="1" 
+F 0 "R?" H 880 3854 50  0000 R CNN
+F 1 "470k" H 880 3945 50  0000 R CNN
+F 2 "" V 880 3900 50  0001 C CNN
+F 3 "~" H 950 3900 50  0001 C CNN
+	1    950  3900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	550  3850 550  3900
+Wire Wire Line
+	800  3900 550  3900
+Connection ~ 550  3900
+Wire Wire Line
+	550  3900 550  3950
+$Comp
+L Device:D_Zener D?
+U 1 1 5E56D26F
+P 1250 3650
+AR Path="/5E4C83A3/5E56D26F" Ref="D?"  Part="1" 
+AR Path="/5E56D26F" Ref="D?"  Part="1" 
+F 0 "D?" H 1250 3866 50  0000 C CNN
+F 1 "5V" H 1250 3775 50  0000 C CNN
+F 2 "" H 1250 3650 50  0001 C CNN
+F 3 "~" H 1250 3650 50  0001 C CNN
+	1    1250 3650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1250 3500 1250 3450
+Wire Wire Line
+	550  3450 1250 3450
+Wire Wire Line
+	1250 3800 1250 3900
+Wire Wire Line
+	1250 3900 1100 3900
+Connection ~ 1250 3450
+$Comp
+L Device:R R?
+U 1 1 5E5BDE14
+P 2400 4150
+AR Path="/5E4C83A3/5E5BDE14" Ref="R?"  Part="1" 
+AR Path="/5E5BDE14" Ref="R?"  Part="1" 
+F 0 "R?" H 2330 4104 50  0000 R CNN
+F 1 "470k" H 2330 4195 50  0000 R CNN
+F 2 "" V 2330 4150 50  0001 C CNN
+F 3 "~" H 2400 4150 50  0001 C CNN
+	1    2400 4150
 	-1   0    0    1   
 $EndComp
 $Comp
 L power:GND #PWR?
-U 1 1 5E53637E
-P 2750 4350
-AR Path="/5E4C83A3/5E53637E" Ref="#PWR?"  Part="1" 
-AR Path="/5E53637E" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 2750 4100 50  0001 C CNN
-F 1 "GND" H 2755 4177 50  0000 C CNN
-F 2 "" H 2750 4350 50  0001 C CNN
-F 3 "" H 2750 4350 50  0001 C CNN
-	1    2750 4350
+U 1 1 5E5BDE1A
+P 2400 4350
+AR Path="/5E4C83A3/5E5BDE1A" Ref="#PWR?"  Part="1" 
+AR Path="/5E5BDE1A" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2400 4100 50  0001 C CNN
+F 1 "GND" H 2405 4177 50  0000 C CNN
+F 2 "" H 2400 4350 50  0001 C CNN
+F 3 "" H 2400 4350 50  0001 C CNN
+	1    2400 4350
+	1    0    0    -1  
+$EndComp
+Connection ~ 1900 3450
+Wire Wire Line
+	1900 3450 1250 3450
+Wire Wire Line
+	1250 3900 1500 3900
+Wire Wire Line
+	1500 3900 1500 3700
+Connection ~ 1250 3900
+$Comp
+L Device:Q_PMOS_DGS Q?
+U 1 1 5E6A2591
+P 2400 3550
+AR Path="/5E4C83A3/5E6A2591" Ref="Q?"  Part="1" 
+AR Path="/5E6A2591" Ref="Q?"  Part="1" 
+F 0 "Q?" V 2743 3550 50  0000 C CNN
+F 1 "Q_PMOS_DGS" V 2652 3550 50  0000 C CNN
+F 2 "" H 2600 3650 50  0001 C CNN
+F 3 "~" H 2400 3550 50  0001 C CNN
+	1    2400 3550
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	2400 3950 2400 3750
+Wire Wire Line
+	2400 4350 2400 4300
+Text Notes -450 4800 0    50   ~ 0
+LT1389, DMG3401LSN-7
+Wire Wire Line
+	1900 3950 2400 3950
+Wire Wire Line
+	1900 3450 2200 3450
+Wire Wire Line
+	1900 3500 1900 3450
+Wire Wire Line
+	1500 3700 1600 3700
+Wire Wire Line
+	1900 3900 1900 3950
+$Comp
+L Device:Q_PMOS_DGS Q?
+U 1 1 5E536354
+P 1800 3700
+AR Path="/5E4C83A3/5E536354" Ref="Q?"  Part="1" 
+AR Path="/5E536354" Ref="Q?"  Part="1" 
+F 0 "Q?" V 2143 3700 50  0000 C CNN
+F 1 "Q_PMOS_DGS" V 2052 3700 50  0000 C CNN
+F 2 "" H 2000 3800 50  0001 C CNN
+F 3 "~" H 1800 3700 50  0001 C CNN
+	1    1800 3700
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	2400 4000 2400 3950
+Connection ~ 2400 3950
+Text Notes 3200 5650 0    50   ~ 0
+alternative to this: SiP32101
+Text Notes -650 2200 0    50   ~ 0
+solder jumpers to forgo the polarity checking for efficiency
+Text Notes 2650 3900 0    50   ~ 0
+average loss from panel within voltage limits = 1.5 uA?
+Text Notes 2250 5950 0    50   ~ 0
+assuming leakage doesn't flip the transistors on, average current consumption should be 400 nA max
+Text Notes 2250 1450 0    50   ~ 0
+assuming leakage doesn't flip the transistors on, average current consumption should be 400 nA max
+Text Notes 5600 1300 0    50   ~ 0
+worst case 4V applied across resistors totaling to 10M -> 400 nA + approx 400 nA from charger.\n\nworst case 1 uA
+Text Notes 6800 6200 0    50   ~ 0
+worst case 1 uA
+Text Notes 8550 5700 0    50   ~ 0
+absolute worst case charging loss: 5 uA max, typ. 2 uA if polarity protection is skipped checked\n\n1.5 uA of which doesn't exist if no solar panel attached\n\nbattery leakage should be 0.5 uA + typ sleep power of control units (1.2 uA + 1.28 uA if no standby, else 1.5 uA total on standby w/ RTC)
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5E790DDE
+P 3700 2000
+F 0 "JP?" H 3700 2205 50  0000 C CNN
+F 1 "SolderJumper_2_Bridged" H 3700 2114 50  0000 C CNN
+F 2 "" H 3700 2000 50  0001 C CNN
+F 3 "~" H 3700 2000 50  0001 C CNN
+	1    3700 2000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2750 4350 2750 4250
+	3550 2000 3400 2000
 Wire Wire Line
-	1750 3850 1750 3900
+	3850 2000 4100 2000
+Connection ~ 4100 2000
 Wire Wire Line
-	1750 3450 1950 3450
+	4100 2000 4250 2000
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5E79D20E
+P 5250 2000
+F 0 "JP?" H 5250 2205 50  0000 C CNN
+F 1 "SolderJumper_2_Bridged" H 5250 2114 50  0000 C CNN
+F 2 "" H 5250 2000 50  0001 C CNN
+F 3 "~" H 5250 2000 50  0001 C CNN
+	1    5250 2000
+	1    0    0    -1  
+$EndComp
+Connection ~ 4750 2000
 Wire Wire Line
-	2750 3950 2750 3850
+	4750 2000 5100 2000
 Wire Wire Line
-	2250 3850 2250 3900
+	5400 2000 5750 2000
 Wire Wire Line
-	2250 3900 1750 3900
-Connection ~ 1750 3900
+	4300 1600 3400 1600
 Wire Wire Line
-	1750 3900 1750 3950
+	3400 1600 3400 2000
+Connection ~ 3400 2000
 Wire Wire Line
-	2050 3550 1950 3550
+	3400 2000 3200 2000
 Wire Wire Line
-	1950 3550 1950 3450
-Connection ~ 1950 3450
+	4600 1600 5750 1600
 Wire Wire Line
-	1950 3450 2550 3450
+	5750 1600 5750 2000
+Connection ~ 5750 2000
 Wire Wire Line
-	2450 3550 2600 3550
-Wire Wire Line
-	2600 3550 2600 3850
-Wire Wire Line
-	2600 3850 2750 3850
-Connection ~ 2750 3850
-Wire Wire Line
-	2750 3850 2750 3750
-Wire Wire Line
-	5600 2100 5600 3450
-Wire Wire Line
-	2950 3450 5600 3450
-Connection ~ 5600 3450
-Wire Wire Line
-	5600 3450 5600 4400
+	5750 2000 6750 2000
+$Comp
+L Jumper:SolderJumper_2_Open JP?
+U 1 1 5E7C6502
+P 4450 1600
+F 0 "JP?" H 4450 1805 50  0000 C CNN
+F 1 "SolderJumper_2_Open" H 4450 1714 50  0000 C CNN
+F 2 "" H 4450 1600 50  0001 C CNN
+F 3 "~" H 4450 1600 50  0001 C CNN
+	1    4450 1600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

@@ -919,4 +919,12 @@ Text Notes 2750 6900 0    50   ~ 0
 ST LINK power in here?
 Text Notes 3950 6950 0    50   ~ 0
 or overriding the LDO power?
+Text Notes 7500 2100 0    50   ~ 0
+max. 2.5 uA if active but no load (very brief)
+Text Notes 7450 3600 0    50   ~ 0
+max 2 uA if active but no load (also very brief)
+Text Notes 3300 6800 0    50   ~ 0
+0.25 uA if 1812, else approx 0
+Text Notes 8900 4800 0    50   ~ 0
+max 1.2 uA idling with state preserved
 $EndSCHEMATC
