@@ -385,7 +385,7 @@ F 3 "" H 3750 6450 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 Connection ~ 3200 5950
-Text Notes 1100 7050 0    50   ~ 0
+Text Notes 1900 5150 0    50   ~ 0
 depending on TX power, may be necessary to use the higher current LDO - otherwise downsize to MCP1810
 Wire Wire Line
 	1450 5950 1450 3700
@@ -620,33 +620,10 @@ F 3 "http://www.vishay.com.hk/docs/66597/sip32431.pdf" H 6500 3900 50  0001 C CN
 	1    6500 3900
 	1    0    0    -1  
 $EndComp
-Entry Wire Line
-	5600 3500 5700 3600
-Wire Wire Line
-	5700 3600 5700 3900
-Entry Wire Line
-	5900 2400 6000 2300
-Wire Wire Line
-	6000 2300 6000 2000
-Wire Bus Line
-	5900 2400 5600 2400
-Text Notes 5600 2950 0    50   ~ 0
-MCU control signals
-Wire Bus Line
-	5600 2400 5600 2950
-Wire Bus Line
-	5600 2950 5800 2950
-Connection ~ 5600 2950
-Wire Bus Line
-	5600 2950 5600 3500
 Wire Wire Line
 	6000 1900 6200 1900
 Wire Wire Line
-	6000 2000 6200 2000
-Wire Wire Line
 	6000 3800 6200 3800
-Wire Wire Line
-	5700 3900 6200 3900
 Text Notes 8850 6150 0    50   ~ 0
 Mbed reserves DIO1 the generic IRQ pin\ncan use the other DIOs as concurrent interrupt sources. 10 different interrupt sources.\n\nLoRa interrupts:\nTxDone\nRxDone\nPreambleDetected\nHeaderValid\nHeaderErr\nCrcErr\nCadDone\nCadDetected\nTimeout\n\ncan map DIOs 1 & 3 arbitrarily to these - 2 is used for the RF switch\n
 $Comp
@@ -661,11 +638,35 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20005623B.pdf" H 4450 5500 
 	1    0    0    -1  
 $EndComp
 $Sheet
-S 5350 5900 650  150 
+S 5350 5850 700  1700
 U 5E59DFEA
 F0 "mcu" 50
 F1 "mcu.sch" 50
 F2 "VDD" I L 5350 5950 50 
+F3 "PA1" B R 6050 6150 50 
+F4 "PA3" B R 6050 6250 50 
+F5 "PA4" B R 6050 6350 50 
+F6 "PA5" B R 6050 6450 50 
+F7 "PA6" B R 6050 6550 50 
+F8 "PA7" B R 6050 6650 50 
+F9 "PA8" B R 6050 6750 50 
+F10 "PA9" B R 6050 6850 50 
+F11 "PA10" B R 6050 6950 50 
+F12 "PA11" B R 6050 7050 50 
+F13 "PA12" B R 6050 7150 50 
+F14 "MCO" B L 5350 7050 50 
+F15 "VCP_TX" O L 5350 7350 50 
+F16 "SWDIO" B L 5350 7150 50 
+F17 "SWCLK" B L 5350 7250 50 
+F18 "VCP_RX" I L 5350 7450 50 
+F19 "PB0" B L 5350 6150 50 
+F20 "PB1" B L 5350 6250 50 
+F21 "PB3" B L 5350 6350 50 
+F22 "PB4" B L 5350 6450 50 
+F23 "PB5" B L 5350 6550 50 
+F24 "PB6" B L 5350 6650 50 
+F25 "PB7" B L 5350 6750 50 
+F26 "~RST" B L 5350 6950 50 
 $EndSheet
 $Sheet
 S 8000 4700 550  1400
@@ -850,22 +851,66 @@ F 3 "http://www.vishay.com.hk/docs/66597/sip32431.pdf" H 2100 2200 50  0001 C CN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1800 2200 1650 2200
-Wire Wire Line
-	1650 2200 1650 2950
-Text GLabel 1750 2950 2    50   Input ~ 0
-5V_EN
-Wire Wire Line
-	1750 2950 1650 2950
-Text GLabel 1700 4550 2    50   Input ~ 0
-3V3_EN
-Wire Wire Line
-	1700 4550 1600 4550
-Wire Wire Line
-	1600 4550 1600 4150
-Wire Wire Line
-	1600 4150 1950 4150
-Wire Wire Line
 	5350 5950 5100 5950
 Connection ~ 5100 5950
+Text Notes 3350 7450 0    50   ~ 0
+need ST Link power to come into MCU too
+Wire Wire Line
+	1800 2200 1550 2200
+Text Label 1550 2200 0    50   ~ 0
+5V_EN
+Wire Wire Line
+	1950 4150 1650 4150
+Text Label 1650 4150 0    50   ~ 0
+3V3_EN
+Wire Wire Line
+	1600 6500 1300 6500
+Text Label 1300 6500 0    50   ~ 0
+3V3_EN
+Wire Wire Line
+	1600 6400 1350 6400
+Text Label 1350 6400 0    50   ~ 0
+5V_EN
+Text Notes 1950 6350 0    50   ~ 0
+reserved pins
+Text Label 1300 6700 0    50   ~ 0
+~RADIO_RST
+Wire Wire Line
+	1300 6700 1700 6700
+Wire Wire Line
+	1300 7200 1700 7200
+Text Label 1300 7200 0    50   ~ 0
+~RADIO_CS
+Wire Wire Line
+	1300 6900 1700 6900
+Text Label 1300 6900 0    50   ~ 0
+RADIO_SCK
+Wire Wire Line
+	1300 7000 1700 7000
+Text Label 1300 7000 0    50   ~ 0
+RADIO_MOSI
+Wire Wire Line
+	1300 7100 1700 7100
+Text Label 1300 7100 0    50   ~ 0
+RADIO_MISO
+Wire Wire Line
+	8000 5650 7900 5650
+NoConn ~ 7900 5650
+Wire Wire Line
+	8000 5750 7900 5750
+NoConn ~ 7900 5750
+Wire Wire Line
+	8000 5550 7900 5550
+Text Label 1300 7400 0    50   ~ 0
+RADIO_DIO1
+Wire Wire Line
+	1300 7400 1700 7400
+Text Label 1300 7500 0    50   ~ 0
+RADIO_BUSY
+Wire Wire Line
+	1300 7500 1700 7500
+Text Label 1300 7600 0    50   ~ 0
+RADIO_ANT_EN
+Wire Wire Line
+	1300 7600 1700 7600
 $EndSCHEMATC
