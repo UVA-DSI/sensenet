@@ -823,7 +823,7 @@ worst case 4V applied across resistors totaling to 10M -> 400 nA + approx 400 nA
 Text Notes 6800 6200 0    50   ~ 0
 worst case 1 uA
 Text Notes 8550 5700 0    50   ~ 0
-absolute worst case charging loss: 5 uA max, typ. 2 uA if polarity protection is skipped checked\n\n1.5 uA of which doesn't exist if no solar panel attached\n\nbattery leakage should be 0.5 uA + typ sleep power of control units (1.2 uA + 1.28 uA if no standby, else 1.5 uA total on standby w/ RTC)
+absolute worst case charging loss: 5 uA max, typ. 2.5 uA if polarity protection is skipped checked\n\nbattery leakage should be 0.5 uA + typ sleep power of control units (1.2 uA + 1.28 uA if no standby, else 1.5 uA total on standby w/ RTC)
 $Comp
 L Jumper:SolderJumper_2_Bridged JP?
 U 1 1 5E790DDE
