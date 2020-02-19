@@ -1,4 +1,4 @@
-update=02/18/2020 7:18:35 PM
+update=02/18/2020 8:10:29 PM
 version=1
 last_client=kicad
 [general]
@@ -34,7 +34,7 @@ LibDir=
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=C:/Users/krad2/OneDrive/Desktop/img/
+PlotDirectoryName=../schematics/
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
