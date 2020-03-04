@@ -27,7 +27,7 @@ implementations. You can get more information about each set-up following
 the links below:
 
 * Sensenet
-* [Smartcville + School of Data Science](projects/cci-sds.md)
+* [Smartcville + School of Data Science](projects/CCI-SDS/README.md)
 * Community Sense
 
 ## Contact and licensing info
