@@ -200,7 +200,7 @@ void loop() {
     uint16_t scd30_co2 = scd30.getCO2();  // in ppm
     float temp = scd30.getTemperature();
     float rel_hum = scd30.getHumidity();
-    Serial.println("SCD30 CO2: ");
+    Serial.print("SCD30 CO2: ");
     Serial.print(scd30_co2);
     Serial.println(" ppm");
     sprintf(tempString, "%d", scd30_co2);
