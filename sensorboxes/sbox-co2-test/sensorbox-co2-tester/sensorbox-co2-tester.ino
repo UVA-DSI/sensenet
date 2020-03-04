@@ -218,11 +218,7 @@ void loop() {
     client.publish(SENSOR2_TOPIC, tempString);
     
     // SENSOR3
-    if (! bme680.performReading()) {
-      Serial.println("Failed to perform reading :(");
-      return;
-    }
-
+    bme680.performReading();
     double bme680_voc = bme680.gas_resistance / 1000.0;
     Serial.print("BME680 VOCs: ");
     Serial.print(bme680_voc);
