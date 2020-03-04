@@ -38,7 +38,7 @@ PubSubClient client(ESPclient);
 // declare sensor objects
 SCD30 scd30;
 Adafruit_SGP30 sgp30;
-//Adafruit_BME680 bme680;
+Adafruit_BME680 bme680;
 
 // define MQTT topics
 #define SENSOR1_TOPIC   "/sensornet/loc0/co2-a"
@@ -50,7 +50,6 @@ void mqtt_connect() {
   String clientId = "ESPClient";
   if (client.connect(mqtt_clientID, mqtt_user, mqtt_passwd)) {
     Serial.println("Connected to MQTT server");
-    //client.subscribe(SENSOR1_TOPIC);
   } else {
     Serial.print("Connection failed, status code = ");
     Serial.print(client.state());
@@ -111,6 +110,23 @@ void sgp30_init() {
   Serial.println("Detected and configured SGP30 sensor");
 }
 
+/**
+ * Sensor 3
+ */
+
+void bme680_init() {
+   if (!bme680.begin()) {
+    Serial.println("Could not find BME680 sensor");
+    while (1);
+   }
+  
+  bme680.setTemperatureOversampling(BME680_OS_8X);
+  bme680.setHumidityOversampling(BME680_OS_2X);
+  bme680.setPressureOversampling(BME680_OS_4X);
+  bme680.setIIRFilterSize(BME680_FILTER_SIZE_3);
+  bme680.setGasHeater(320, 150); // 320*C for 150 ms 
+}
+
 /*  
  *  Return absolute humidity [mg/m^3] with approximation formula
  *  @param temperature [°C]
@@ -155,21 +171,8 @@ void setup() {
   // Set up the sensors
   scd30_init();
   sgp30_init();
-
-  /**
-   * Sensor 3
-   */
-//
-//   if (!bme680.begin()) {
-//    Serial.println("Could not find BME680 sensor");
-//    while (1);
-//   }
-//  
-//  bme680.setTemperatureOversampling(BME680_OS_8X);
-//  bme680.setHumidityOversampling(BME680_OS_2X);
-//  bme680.setPressureOversampling(BME680_OS_4X);
-//  bme680.setIIRFilterSize(BME680_FILTER_SIZE_3);
-//  bme680.setGasHeater(320, 150); // 320*C for 150 ms 
+  bme680_init();
+  
 }
 
 char tempString[8];  // temp_var
@@ -188,8 +191,8 @@ void loop() {
   client.loop();
   now = millis();
  
-  // polling every 60s
-  if (now - last_msg > 60000) {
+  // polling every 5s
+  if (now - last_msg > 5000) {
     last_msg = now;
     
     // SENSOR1
@@ -197,6 +200,9 @@ void loop() {
     uint16_t scd30_co2 = scd30.getCO2();  // in ppm
     float temp = scd30.getTemperature();
     float rel_hum = scd30.getHumidity();
+    Serial.println("SCD30 CO2: ");
+    Serial.print(scd30_co2);
+    Serial.println(" ppm");
     sprintf(tempString, "%d", scd30_co2);
     client.publish(SENSOR1_TOPIC, tempString);
     
@@ -212,6 +218,17 @@ void loop() {
     client.publish(SENSOR2_TOPIC, tempString);
     
     // SENSOR3
+    if (! bme680.performReading()) {
+      Serial.println("Failed to perform reading :(");
+      return;
+    }
+
+    double bme680_voc = bme680.gas_resistance / 1000.0;
+    Serial.print("BME680 VOCs: ");
+    Serial.print(bme680_voc);
+    Serial.println(" KOhms");
+    dtostrf(bme680_voc, 5, 2, tempString);
+    client.publish(SENSOR3_TOPIC, tempString);
     
     Serial.println();
   }

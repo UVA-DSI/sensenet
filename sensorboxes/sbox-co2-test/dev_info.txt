@@ -6,9 +6,9 @@ DEV_clock = 160
 DEV_ID = sbox-co2-tester
 LOC = loc0
 
-SENSOR1 = BME680 (eCO2)
+SENSOR1 = SCD30 (CO2)
 SENSOR2 = SGP30 (eCO2)
-SENSOR3 = SCD30 (CO2)
+SENSOR3 = BME680 (eCO2)
 
 SENSOR1_TOPIC   "/sensornet/loc0/co2-a"
 SENSOR2_TOPIC   "/sensornet/loc0/co2-b"
