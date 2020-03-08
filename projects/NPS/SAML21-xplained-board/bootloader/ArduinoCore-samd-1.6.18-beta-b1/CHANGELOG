@@ -1,0 +1,256 @@
+Up next:
+* **Add MicroPython support.** Add Demo sketch with Arduino shell and Python interpreter.
+* Add QSPI driver with XIP (DDR support only when the MCU runs at 48MHz) for the D51.
+* Add FLASH memory driver libraries
+* Add Mass Storage device and/or UF2 support to the bootloader
+* Add 32-pin (E) generic variant
+* Fix MIDI issue
+* Change ADC sampling time (make configurable?), possibly add a continuous sampling mode with non-blocking reads
+* Add SAM D51 support to I2S driver (I have finished DMA driver changes)
+* Add PDM microphone and MCK support to I2S driver
+* Add internal temperature sensor driver (as described in datasheets), currently testing, D51 missing calibration values
+* Fix new ringbuffer issue
+* Add BUCK_CONVERTER_ENABLED define and/or menu item, to enable on-chip buck converter of D51 and L21.
+  Must solve possible issue first (auto-reset failure when buck converter enabled).
+
+1.6.18-beta-b1 (June 26, 2018):
+* Added BATTERY_CHARGER_INSTALLED, IMU_INSTALLED, and VIN_5V_REGULATOR_INSTALLED defines to variants/Xeno_Mini/variant.c
+  (and variant.h) to prevent associated pins from being configured as outputs, thus avoiding contention.
+* Made various changes to reduce code size, including making ADC and DAC initialization optional if unused, using VARIANT_MCK instead of
+  SystemCoreClock in init(), and converting some RMW's to writes. Added config.h file for configuration.
+  * Added config.h file, which contains defines for building that are mainly used to reduce code size
+  * Removed pinMode(31, INPUT) from init() in wiring.c as it is already setup (and pinMode should not be used here because we always want port pin A31, not Arduino pin 31)
+  * Moved ADC and DAC initialization from wiring.c to wiring_analog.c, with ability to initialize only on use.
+* Added an additional PinDescription table format, which can be used to reduce code size (D11 chips only for now)
+* Added support for 20 different timer PWM frequencies selectable through the Tools menu, as well as other various clock system changes
+* Fixed bad first read from analogRead() after changing references by using a dummy read.
+* Added support for the hardware FPU of the D51
+  * Added -mfloat-abi=softfp (this will use hardware fpu with soft-float calling conventions) and -mfpu=fpv4-sp-d16 compiler flags for the D51 only.
+  * Fixed build.mathlib build flag (arm_cortexM4lf_math or -arm_cortexM0l_math), added -DARM_MATH_CM0PLUS or -DARM_MATH_CM4
+* Added optional support for single precision floating point numbers (in addition to the existing support for doubles) in both the Print and String classes,
+  configurable from the Tools menu. This can save a great deal of code space. Thanks to Soren Kuula and Dmitry Xmelkov for their previous work.
+  * Print::print and Print::println now have separate overloaded methods for float and doubles (previously, floats were promoted to doubles).
+    Additionally, to support this, Print::printDouble() has been added (Print::printFloat() used to promote to double, but now uses floats).
+  * Added Stream::parseDouble() to Stream.cpp, and pgm_read_double(), pgm_read_double_near(), and pgm_read_double_far() to avr/pgmspace.h.
+  * Added avr/ftostrf.c and avr/ftostrf.h to support single precision floats (avr/dtostrf.c is still double precision). It is similar to avr-libc version.
+    Additionally, to support this, added avr/dtoa_conv.h, avr/dtoa_prf.c. Copyright (c) 2005, Dmitry Xmelkov.
+    Additionally, added avr/ftoa_engine.h, and avr/ftoa_engine.c. Copyright (c) 2005, Dmitry Xmelkov. Rewritten in C by Soren Kuula (from Ardupilot project).
+    These are used by String::String and String::concat, which are overloaded, so ftostrf.c or dtostrf.c is selected automatically based on the value argument.
+  * Added -fsingle-precision-constant and -Wdouble-promotion compiler flags
+* Added support for 64-bit integer types to the Print class (long long and unsigned long long)
+* Added optional support for printing floating point numbers using the Print class with values greater/less than +/-4,294,967,295. It now supports +/-18,446,744,073,709,551,615.
+* Documentation updates, including new PinDescription table format
+* Beta builds will now be included in the main release json file
+
+1.6.18-beta-b0 (February 22, 2018):
+* Added SAM D51 (m4f) support to core
+* Added MattairTech Xeno Mini board support
+* Changed name to "MattairTech SAM D|L|C core for Arduino"
+* Added _ulTickCountHighWord to delay() to avoid 49.7-day wraparound, can disable in config.h from 1.6.18-beta-b1
+* Updated timeout in [Bossa](https://github.com/mattairtech/BOSSA) tool for D51 1MB FLASH (5 second erase)
+* Correction of include path for CMSIS-Atmel - Thanks @joseangeljimenez
+* Documentation updates
+* Merged in changes from upstream SAMD CORE 1.6.18 (not released yet)
+  * Don't reallocate USB buffers if already allocated - fixes memory leak
+  * Wire: Added support for general call (broadcast)
+  * SPI: Added SPI.notUsingInterrupt(...) API
+  * Wire: TX and RX buffers are now 256 bytes (previously was 64 bytes)
+  * Fixed lock ups when outputting to UART during ISR
+  * Wire: correct I2C frequency calculations, and allow variant to overide default pull up resistor rise time
+  * Revert new ringbuffer code for now
+* Merged in changes from upstream SAMD CORE 1.6.17
+  * UART's now support optional RTS and CTS pins defined in the variant.
+
+1.6.17 (release version, February 22, 2018, same as 1.6.17-beta-b0):
+1.6.17-beta-b0:
+* Added SAM D51 (m4f) support to bootloader
+* Added Generic D11D14AS (20-pin SOIC) variant
+* Made PIN_USB_HOST_ENABLE optional. Readme updates for MT-D11 and Generic D11C14A
+* Fixed USB pad calibration values for L21 in bootloader and USB host mode
+* Improve accuracy of HS crystal (fixed off-by-one calculation)
+* fixed wrong location for call to mapResolution(), doc updates
+* Documentation updates
+* Merged in changes from upstream SAMD CORE 1.6.17 (not released yet)
+  * Improved ISR response time. Thanks @joverbee
+  * No fixed value for USB power current.
+
+1.6.16 (release version, same as 1.6.16-beta-b0):
+1.6.16-beta-b0:
+* Added MattairTech Xeno support (64-pin D21, L21, and C21)
+* Changed version numbering to match Arduino SAMD core to indicate which upstream changes have been merged in.
+  * Release version 1.6.7 then skips to 1.6.16. Beta version 1.6.8-beta-b2 skips to 1.6.16-beta-b0.
+* Merged in changes from upstream SAMD CORE 1.6.16 2017.08.23:
+  * PWMs now can perform real 16-bit resolution if analogWriteResolution(16) is set. Thanks @Adminius
+  * USB CDC: fixed issue of available() getting stuck when receiving ZLP's
+  * Serial (UART) tx is now buffered.
+  * Updated Stream and Print class
+  * Native USB now supports USB Serial Number
+  * Fixed pgm_read_ptr compatibility macro. Thanks @nkrkv
+* Documentation updates
+
+**Version numbering change**
+
+1.6.8-beta-b2:
+* Added SD Card firmware loading support to the bootloader (4KB and 8KB)
+* Removed SDU library, as the bootloader now supports SD cards directly (and the SDU library is GPL)
+* Removed automatic page writes from bootloader (may have caused bricked board during development)
+* Fixed bootloader compilation on Windows
+* Added more Serial, SPI, and WIRE instances to MT-D21E (rev A and B)
+* Added support for up to 6 SERCOM on the L21E (32-pin)
+* Merged in changes from upstream SAMD CORE 1.6.16 (not released yet):
+  * USB CDC: fixed issue of available() getting stuck when receiving ZLP's
+* Merged in changes from upstream SAMD CORE 1.6.15 2017.04.27 (not relevant)
+* Merged in changes from upstream SAMD CORE 1.6.14 2017.04.04:
+  * Added lowpower function on USB subsystem
+* Documentation updates
+
+1.6.8-beta-b1:
+* Fixed auto-reset not working on some versions of Windows
+* Documentation updates
+
+1.6.8-beta-b0:
+* Added L21 and C21 support. Improved D11D and D11C support.
+  * Use Tools->Microcontroller menu to select mcu.
+* Both the core and bootloader have added support for:
+  * external high-speed crystal (400KHz - 32MHz) using PLL
+  * external 32.768KHz crystal using PLL
+  * internal oscillator with USB calibration using DFLL
+  * internal oscillator using DFLL in open-loop mode (or 48MHz RC oscillator with C21)
+  * PLL_FRACTIONAL_ENABLED and PLL_FAST_STARTUP options
+  * The clock source is selectable in the Tools->Clock Source menu
+* New Tools->Serial Config menu for selecting different combinations of serial peripherals
+* New Tools->Bootloader Size menu allows selection of bootloader size
+* New Tools->USB Config menu simplifies USB configuration compared to previous core
+* Updated variant.cpp table format for future CCL and GCLK use. See VARIANT_COMPLIANCE_CHANGELOG.
+* Updated bossac upload tool (fixed support for SAML and SAMC)
+* New CMSIS-Atmel package (this is different than from Arduino)
+* Merged in changes from upstream SAMD CORE 1.6.14: (not relevant)
+* Merged in changes from upstream SAMD CORE 1.6.13 2017.03.31:
+  * Added SDU (SD card Updater) library. Not set up yet for MattairTech boards.
+  * Fixed 8MHz clock being generated incorrectly. Thanks @keestux
+* Merged in changes from upstream SAMD CORE 1.6.12 2017.02.07:
+  * Fixed type conflict of utoa function. Thanks @kbumsik
+  * Fixed pinMode(pin, OUTPUT) not working after analogRead(pin)
+* Merged in changes from upstream SAMD CORE 1.6.11 2016.12.23 (not relevant)
+* Merged in changes from upstream SAMD CORE 1.6.10 2016.12.23:
+  * Added .org boards
+  * linker: .data section is now aligned to 16 bytes address
+  * Added method to automatically retrieve sketch start via linker variable
+  (see https://github.com/arduino/ArduinoCore-samd/pull/185)
+  * Fixed USBDevice.epBank1EnableTransferComplete method
+  * Adapted bootloader source code to CMSIS 4.5
+* Merged in changes from upstream SAMD CORE 1.6.9 2016.12.12:
+  * SPI: Optimized SPI.transfer(...)
+  * Added linker flags for the ARM Math library
+  * Added new I2S library
+  * Bootloader: Check sketch vectors before waiting for double tap
+  * Upgraded CMSIS version to 4.5.0, and use new CMSIS-Atmel package
+* Merged in changes from upstream SAMD CORE 1.6.8 2016.10.12:
+  * Fixed regression on analogWrite. Thanks @bose-mdellisanti!
+  * Fixed regression on SerialUSB.available()
+  * C++ global constructors (if any) are now run after hardware initalization.
+ * Merged in changes from upstream SAMD CORE 1.6.7 2016.09.28:
+  * Fixed Serial.flush() blocking before any writes. Thanks @hangmoh
+  * Added snprintf_P to avr/pgmspace.h stub. Thanks @jantje
+  * Another small fix to String iterators. Thanks @Ivan-Perez @Chris--A
+  * Fixes SerialUSB.write(...) returning 0 instead of byte written
+  * Added Uart::availableForWrite()
+  * Added defines for RAMSTART, RAMSIZE, RAMEND
+  * Fixed writing LOW to a digital input pin blocking subsequent digitalRead attempts
+  * Fixed digitalWrite() unnecessarily activating the pull-up resistor
+  * Wire: Slave writes now use TX buffer
+  * Added getTimeout() method to Stream.
+  * Fixed glitch in PWM generation that may happen when calling analogWrite()
+  * PWM frequency is now 732.4Hz (before it was 187500.0Hz)
+  * Improved reliability of SerialUSB under heavy load (this should solve
+  all issues with MKR1000/WiFi101 firmware updater on MacOSX)
+  * Improved SerialUSB.read() performance
+  * Added String::toDouble()
+  * Bootloader: LED now pulses and USB TX/RX blink on transfer (like Leonardo)
+  * Bootloader: enabled USB string descriptors
+
+1.6.7:
+1.6.7-beta-b0:
+* OS X support added (bossac for OS X can now upload to all supported chips) (Thanks @joseangeljimenez for testing)
+* New bossac upload tool (added support for SAML and SAMC)
+* New bootloader from upstream SAMD CORE (see bootloaders/zero/README.md)
+* New beta release method (see README.md)
+* Changing some names from 'SAMD' to 'SAM M0+'. The core will add L21 and C21 support soon.
+* Merged in changes from upstream SAMD CORE 1.6.3 2016.02.15:
+  * Fixed Wire master repeated start behaviour
+  * Added SerialUSB methods: readBreak(), baud(), stopbits(), paritytype(), numbits(), dtr(), rts()
+  * Added SPI.transfer16(..) method
+  * Bugfix: added missing Serial.begin(baud, config) method. Thanks @tuxedo0801
+  * Fixed Serial baudrate calculations for 1200bps. Thanks @TomKeddie
+  * Fixed Serial.flush() that now waits until the last bit has been sent. Thanks @TomKeddie
+  * Fixed Serial configuration for data-bit. Thanks @TomKeddie
+  * Bootloader: 32Khz external oscillator is now used, improves USB clock. Thanks @aethaniel
+  * Bootloader: Clean up of makefiles and file organization. Thanks @aethaniel
+  * Small fix to USBHost example "USB_desc.ino". Thanks @bbx10
+  * USBHost: USB-Keyboard right shift key was ignored. Thanks @bbx10 
+  * Wire library now support multiple instances in variant. Thanks @spiderkeys
+  * Ported some SerialUSB API (readBreak(), baud(), stopbits(), paritytype(), numbits(), dtr(), rts())
+* Merged in changes from upstream SAMD CORE 1.6.4 2016.02.19:
+  * Fixed Wire address setup when running as slave.
+  * Fixed String constructor when using floating point numbers.
+  * USBHost: fixed blocking USBHost.Task(). Thanks @bbx10
+  * USBHost: fixed some ASCII Control codes in keyboard controller. Thanks @bbx10
+  * USBHost: ported some minor fix from upstream UHS2. Thanks @bbx10
+  * USBHost: fixed wrong library initialization. Thanks @bbx10 @ladyada
+  * better interrupt handling in Serial::accept()
+* Merged in changes from upstream SAMD CORE 1.6.5 2016.04.02:
+  * Set NVMCTRL.MANW bit to 1 (default is 0). This prevents accidental writes on program memory.
+  * Bootloader: Fixed wrong UART speed (regression)
+  * Fixed incorrect return value from Wire.available() when the receive buffer is not fully read.
+  * Added DAC0 definition in Arduino/Genuino Zero variant file.
+* Merged in changes from upstream SAMD 1.6.6 2016.05.19:
+  * Fixed digitalPinToInterrupt() macro, now it works as documented.
+  * Added analogInputToDigitalPin macro
+  * On-board RX-TX LEDs now blinks when there is activity on the native USB port
+  * Fixed platform.txt, the core now compiles again with Arduino IDE <=1.6.5. Thanks @per1234
+  * Fixed Wire.write(0x00) "ambiguos method" error
+  * String class now supports iterators. Thanks @Chris--A
+
+1.6.6-mt3:
+* Fixes compilation with CDC_UART and CDC_ONLY settings
+
+1.6.6-mt2:
+* Changes the default Communication setting to CDC_UART (from CDC_HID_UART)
+
+1.6.6-mt1:
+* New documentation section 'Special Notes'. Please read!
+* Updated ASCII pinouts to be more readable and less ambiguous.
+* Updated the Signed driver for Windows (extras directory).
+  * adds CDC/MIDI/HID, CDC/MSD/HID, and CDC/MSD/MIDI/HID composite USB devices.
+  * Of the above, currently only CDC/MIDI/HID is usable (see MIDIUSB library).
+* Merged in changes from upstream:
+  * Added SPI.transfer16(..) method
+  * Bugfix: added missing Serial.begin(baud, config) method. Thanks @tuxedo0801
+* the pin mode is changed to INPUT mode, arduino/ArduinoCore-samd#28
+* HardwareSerial BUG Rx pin floating input, arduino/ArduinoCore-samd#48
+* Send a ZLP if data size is multiple of EPX_SIZE for USB sends, arduino/ArduinoCore-samd#63
+* Print not aborting on write failure, changelog update
+* Tone fix for arduino/ArduinoCore-samd#59 and optimizations
+* Fix warnings about deprecated recipe.ar.pattern
+* Merged in changes from upstream SAMD CORE 1.6.2 2015.11.03:
+  * Fixed bug in delay calculations
+  * Fixed deadlock conditions in Wire. Thanks Erin Tomson
+  * Print not aborting on write() failure. Thanks @stickbreaker
+  * SPI can now be configured in variants. Thanks @aethaniel
+  * Implemented Wire.end
+  * Implemented Wire.setClock. Thanks @PaoloP74
+  * Wire: allow scanning bus via beginTransmission-endTransmission
+  * USB Device: big refactoring and bug fix
+  * USB Device: added PluggableUSB interface
+
+1.6.5-mt2:
+* Added support for the MT-D11 (ATSAMD11D14AM).
+* Reduced code size (see 'Code Size and RAM Usage' below).
+* Any combination of CDC, HID, or UART can be used (or no combination), by using the Tools->Communication menu.
+* Note that switching between CDC and CDC+HID will require re-selecting the COM port.
+* More detailed memory usage at end of compilation (see below).
+* Merged in upstream updates. Fixed Wire interrupt.
+* Tested all ADC, DAC, external interrupts, PWM outputs, serial, SPI, and Wire instances/pins.
+
+1.6.5-mt1:
+* Initial release

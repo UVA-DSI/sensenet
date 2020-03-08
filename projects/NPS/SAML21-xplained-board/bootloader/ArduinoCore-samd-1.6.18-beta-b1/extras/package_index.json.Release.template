@@ -1,0 +1,53 @@
+{
+	"name": "MattairTech SAM D|L|C core for Arduino",
+	"architecture": "samd",
+	"version": "%%VERSION%%",
+	"category": "Contributed",
+	"url": "https://www.mattairtech.com/software/arduino/%%FILENAME%%",
+	"archiveFileName": "%%FILENAME%%",
+	"checksum": "SHA-256:%%CHECKSUM%%",
+	"size": "%%SIZE%%",
+        "boards": [
+            {"name": "Xeno_Mini"},
+            {"name": "Xeno"},
+            {"name": "MT-D21E"},
+            {"name": "MT-D21E_revB"},
+            {"name": "MT-D11"},
+            {"name": "Generic_D11C14A"},
+            {"name": "Generic_D11D14AS"},
+            {"name": "arduino_zero"},
+            {"name": "arduino_mzero"}
+	],
+	"toolsDependencies": [
+	{
+		"packager": "arduino",
+		"name": "arm-none-eabi-gcc",
+		"version": "4.8.3-2014q1"
+	},
+	{
+		"packager": "MattairTech_Arduino",
+		"name": "bossac",
+		"version": "1.7.0-mattairtech-3"
+	},
+	{
+		"packager": "arduino",
+		"name": "openocd",
+		"version": "0.9.0-arduino"
+	},
+	{
+		"packager": "arduino",
+		"name": "CMSIS",
+		"version": "4.5.0"
+	},
+	{
+		"packager": "MattairTech_Arduino",
+		"name": "CMSIS-Atmel",
+		"version": "1.0.0-mattairtech-2"
+	},
+	{
+		"packager": "arduino",
+		"name": "arduinoOTA",
+		"version": "1.2.0"
+	}
+	]
+}
