@@ -43,7 +43,7 @@ influx -host example.org -port 8086 -ssl -username $USER -p YOURPASSWD
 
 If self-signed certificates are being used, add '-unsafeSsl'.
 You can also display timestamps in RFC-3339 format by adding '-precision rfc3339'. 
-The date-time will be conveniently displayed in [Gregogirian format / UTC](https://www.ietf.org/rfc/rfc3339.txt). 
+The date-time will be conveniently displayed in [Gregorian format / UTC](https://www.ietf.org/rfc/rfc3339.txt). 
 
 
 
@@ -91,6 +91,12 @@ To delete data points from a particular period of time, use:
 
 ```
 delete from $MEASUREMENT where time < or > or = ($TIME_IN_UNIX_EPOCH or "2020-02-01")
+```
+
+To move all the data from a 'measurement' (tables) to another DB, use:
+
+```
+select * into DB..$MEASUREMENT from DB2..$MEASUREMENT_TO_COPY_FROM group by *
 ```
 
 Another convenient way of pulling data is using a IPython notebook and/or performing
