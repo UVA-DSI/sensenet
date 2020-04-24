@@ -1,12 +1,15 @@
 # 3D Design Files
 
-We include here all the 3D design files for the project. Here you will find:
+We included here the 3D design files for the Smart Cville + School of Data Science project.
+Here you will find:
 
-* Support structures for sensors
-* Insulated sensor box
+* Support structures for sensors ('suport/')
+* Insulated sensor box ('box/')
 * Other support files
 
 ## Authors and Licensing info
 
-All files are distributed with CC-BY-SA 4.0 International.
-See AUTHORS files for details.
+3D box design was done by Luke Pi (@zx82net, Thingiverse), 2019 and Leonardo R. Murillo, 2020.
+3D sensor support design was done by Leonardo R. Murillo, 2020.
+
+All design files are distributed with CC-BY-NC-SA 4.0 International.
