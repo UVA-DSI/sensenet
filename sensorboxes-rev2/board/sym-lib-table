@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name sensenet_board_part_subs)(type Legacy)(uri ${KIPRJMOD}/sensenet_board_part_subs.lib)(options "")(descr ""))
+)
