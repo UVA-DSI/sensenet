@@ -636,16 +636,16 @@ Wire Notes Line
 Wire Notes Line
 	4750 2650 8350 2650
 Wire Notes Line
-	5450 2650 5450 4700
+	5850 2650 5850 4700
 Wire Notes Line
-	8350 4700 5450 4700
+	8350 4700 5850 4700
 Text Notes 1950 750  0    50   ~ 0
 Power Supply (and Related Connectors)
 Text Notes 6700 2400 0    50   ~ 0
 Battery Charging and Battery Disconnect
 Text Notes 2050 2450 0    50   ~ 0
 Breakouts & Connectors
-Text Notes 6250 2750 0    50   ~ 0
+Text Notes 6750 2750 0    50   ~ 0
 Core
 Text Notes 10450 600  2    50   ~ 0
 Reset Switch
@@ -823,175 +823,125 @@ Wire Notes Line
 Wire Wire Line
 	9900 2500 9900 2600
 Connection ~ 9900 2600
-Text Notes 11150 4250 2    50   ~ 0
-DOPO = 0x1, DIPO = 0x1\n\nSCK = PAD3, MOSI = PAD2,\nMISO = PAD1, SS = PAD0
 Wire Notes Line
 	11200 4350 8350 4350
 $Sheet
-S 6050 2950 600  1600
+S 6600 2950 600  1600
 U 5F3BBDAE
 F0 "core" 50
 F1 "core.sch" 50
-F2 "D12" B R 6650 4250 50 
-F3 "D11" B R 6650 4150 50 
-F4 "D10" B R 6650 4050 50 
-F5 "D9" B R 6650 3950 50 
-F6 "D8" B R 6650 3850 50 
-F7 "D7" B R 6650 3750 50 
-F8 "D6" B R 6650 3650 50 
-F9 "D5" B R 6650 3550 50 
-F10 "D4" B R 6650 3450 50 
-F11 "D3" B R 6650 3350 50 
-F12 "D2" B R 6650 3250 50 
-F13 "D1" B R 6650 3150 50 
-F14 "D0" B R 6650 3050 50 
-F15 "A1" B L 6050 3350 50 
-F16 "A5" B L 6050 3750 50 
-F17 "A4" B L 6050 3650 50 
-F18 "A3" B L 6050 3550 50 
-F19 "A2" B L 6050 3450 50 
-F20 "A0" B L 6050 3250 50 
-F21 "VDDIN" I L 6050 3050 50 
-F22 "DP" B L 6050 4300 50 
-F23 "DM" B L 6050 4200 50 
-F24 "RESET" I L 6050 4450 50 
-F25 "SWCLK" I L 6050 4050 50 
-F26 "SWDIO" B L 6050 3950 50 
+F2 "D12" B R 7200 4250 50 
+F3 "D11" B R 7200 4150 50 
+F4 "D10" B R 7200 4050 50 
+F5 "D9" B R 7200 3950 50 
+F6 "D8" B R 7200 3850 50 
+F7 "D7" B R 7200 3750 50 
+F8 "D6" B R 7200 3650 50 
+F9 "D5" B R 7200 3550 50 
+F10 "D4" B R 7200 3450 50 
+F11 "D3" B R 7200 3350 50 
+F12 "D2" B R 7200 3250 50 
+F13 "D1" B R 7200 3150 50 
+F14 "D0" B R 7200 3050 50 
+F15 "A1" B L 6600 3350 50 
+F16 "A5" B L 6600 3750 50 
+F17 "A4" B L 6600 3650 50 
+F18 "A3" B L 6600 3550 50 
+F19 "A2" B L 6600 3450 50 
+F20 "A0" B L 6600 3250 50 
+F21 "VDDIN" I L 6600 3050 50 
+F22 "DP" B L 6600 4300 50 
+F23 "DM" B L 6600 4200 50 
+F24 "RESET" I L 6600 4450 50 
+F25 "SWCLK" I L 6600 4050 50 
+F26 "SWDIO" B L 6600 3950 50 
 $EndSheet
-Text Notes 6950 4650 0    50   ~ 0
-I2C Pins:\n\nD0, D1\nD6, D7\nD10, D11\n\nSerial Pins (using port function C):\n\nSERCOM0: D0, D1, D2, D3\nSERCOM1: D6, D7, D8, D9\nSERCOM2: D4, D5\nSERCOM3: D10, D11\n\nSerial Pins (using port function D):\n\nSERCOM0: A2, A3, A4, A5\nSERCOM2: D0, D1, D2, D3\nSERCOM3: D6, D7, D8, D9\nSERCOM4: D4, D5\nSERCOM5: D10, D11\n\n
 Wire Wire Line
-	6050 4200 5900 4200
-Text Label 5900 4200 0    50   ~ 0
+	6600 4200 6450 4200
+Text Label 6450 4200 0    50   ~ 0
 D-
 Wire Wire Line
-	6050 4300 5900 4300
-Text Label 5900 4300 0    50   ~ 0
+	6600 4300 6450 4300
+Text Label 6450 4300 0    50   ~ 0
 D+
 Wire Wire Line
-	6050 3050 5900 3050
+	6600 3050 6450 3050
 $Comp
 L power:+3V3 #PWR017
 U 1 1 5EE6220C
-P 5900 3050
-F 0 "#PWR017" H 5900 2900 50  0001 C CNN
-F 1 "+3V3" V 5915 3178 50  0000 L CNN
-F 2 "" H 5900 3050 50  0001 C CNN
-F 3 "" H 5900 3050 50  0001 C CNN
-	1    5900 3050
+P 6450 3050
+F 0 "#PWR017" H 6450 2900 50  0001 C CNN
+F 1 "+3V3" V 6465 3178 50  0000 L CNN
+F 2 "" H 6450 3050 50  0001 C CNN
+F 3 "" H 6450 3050 50  0001 C CNN
+	1    6450 3050
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	6650 3050 6800 3050
-Text Label 6800 3050 2    50   ~ 0
+Text Label 7350 3050 2    50   ~ 0
 D0
-Wire Wire Line
-	6650 3150 6800 3150
-Text Label 6800 3150 2    50   ~ 0
+Text Label 7350 3150 2    50   ~ 0
 D1
-Wire Wire Line
-	6650 3250 6800 3250
-Text Label 6800 3250 2    50   ~ 0
+Text Label 7350 3250 2    50   ~ 0
 D2
-Wire Wire Line
-	6650 3350 6800 3350
-Text Label 6800 3350 2    50   ~ 0
+Text Label 7350 3350 2    50   ~ 0
 D3
-Text Label 9300 3350 0    50   ~ 0
-D0
-Text Label 9300 3250 0    50   ~ 0
-D1
-Text Label 9300 3150 0    50   ~ 0
-D2
-Text Label 9300 3050 0    50   ~ 0
-D3
-Wire Wire Line
-	9300 3050 9400 3050
-Wire Wire Line
-	9300 3150 9400 3150
-Wire Wire Line
-	9300 3250 9400 3250
-Wire Wire Line
-	9300 3350 9400 3350
-Wire Wire Line
-	6650 3450 6800 3450
-Text Label 6800 3450 2    50   ~ 0
+Text Label 7350 3450 2    50   ~ 0
 D4
-Wire Wire Line
-	6650 3550 6800 3550
-Text Label 6800 3550 2    50   ~ 0
-D5
-Text Label 9300 3550 0    50   ~ 0
-D4
-Text Label 10800 3750 2    50   ~ 0
+Text Label 7350 3550 2    50   ~ 0
 D5
 Wire Wire Line
-	9300 3550 9400 3550
+	8850 3550 9400 3550
 Wire Wire Line
-	10400 3750 10800 3750
-Text Label 5800 4050 0    50   ~ 0
+	10400 3750 10650 3750
+Text Label 6350 4050 0    50   ~ 0
 SWCLK
-Text Label 5800 3950 0    50   ~ 0
+Text Label 6350 3950 0    50   ~ 0
 SWDIO
 Wire Wire Line
-	6050 3950 5800 3950
+	6600 3950 6350 3950
 Wire Wire Line
-	5800 4050 6050 4050
-Text Label 5800 4450 0    50   ~ 0
+	6350 4050 6600 4050
+Text Label 6350 4450 0    50   ~ 0
 RESET
 Wire Wire Line
-	5800 4450 6050 4450
-Wire Wire Line
-	6650 3650 6800 3650
-Text Label 6800 3650 2    50   ~ 0
+	6350 4450 6600 4450
+Text Label 7350 3650 2    50   ~ 0
 D6
-Wire Wire Line
-	6650 3750 6800 3750
-Text Label 6800 3750 2    50   ~ 0
+Text Label 7350 3750 2    50   ~ 0
 D7
-Wire Wire Line
-	6650 3850 6800 3850
-Text Label 6800 3850 2    50   ~ 0
+Text Label 7350 3850 2    50   ~ 0
 D8
-Wire Wire Line
-	6650 3950 6800 3950
-Text Label 6800 3950 2    50   ~ 0
+Text Label 7350 3950 2    50   ~ 0
 D9
-Wire Wire Line
-	6650 4050 6800 4050
-Text Label 6800 4050 2    50   ~ 0
+Text Label 7350 4050 2    50   ~ 0
 D10
-Wire Wire Line
-	6650 4150 6800 4150
-Text Label 6800 4150 2    50   ~ 0
+Text Label 7350 4150 2    50   ~ 0
 D11
-Wire Wire Line
-	6650 4250 6800 4250
-Text Label 6800 4250 2    50   ~ 0
+Text Label 7350 4250 2    50   ~ 0
 D12
 Wire Wire Line
-	6050 3250 5900 3250
-Text Label 5900 3250 0    50   ~ 0
+	6600 3250 6450 3250
+Text Label 6450 3250 0    50   ~ 0
 A0
 Wire Wire Line
-	6050 3350 5900 3350
-Text Label 5900 3350 0    50   ~ 0
+	6600 3350 6450 3350
+Text Label 6450 3350 0    50   ~ 0
 A1
 Wire Wire Line
-	6050 3450 5900 3450
-Text Label 5900 3450 0    50   ~ 0
+	6600 3450 6450 3450
+Text Label 6450 3450 0    50   ~ 0
 A2
 Wire Wire Line
-	6050 3550 5900 3550
-Text Label 5900 3550 0    50   ~ 0
+	6600 3550 6450 3550
+Text Label 6450 3550 0    50   ~ 0
 A3
 Wire Wire Line
-	6050 3650 5900 3650
-Text Label 5900 3650 0    50   ~ 0
+	6600 3650 6450 3650
+Text Label 6450 3650 0    50   ~ 0
 A4
 Wire Wire Line
-	6050 3750 5900 3750
-Text Label 5900 3750 0    50   ~ 0
+	6600 3750 6350 3750
+Text Label 6450 3750 0    50   ~ 0
 A5
 $Comp
 L Device:R R3
@@ -1159,4 +1109,78 @@ Text Notes 1000 6600 0    50   ~ 0
 Analog I/O Header
 Text Notes 4150 7100 0    50   ~ 0
 Digital I/O Header
+Text Label 8200 3350 2    50   ~ 0
+SPI0_DI
+Text Label 8200 3250 2    50   ~ 0
+SPI0_SS
+Text Label 8200 3150 2    50   ~ 0
+SPI0_SCK
+Text Label 8200 3050 2    50   ~ 0
+SPI0_DO
+Wire Wire Line
+	7200 3050 8200 3050
+Wire Wire Line
+	7200 3150 8200 3150
+Wire Wire Line
+	7200 3250 8200 3250
+Wire Wire Line
+	7200 3350 8200 3350
+Text Label 8200 3950 2    50   ~ 0
+SPI1_DI
+Text Label 8200 3850 2    50   ~ 0
+SPI1_SS
+Text Label 8200 3750 2    50   ~ 0
+SPI1_SCK
+Text Label 8200 3650 2    50   ~ 0
+SPI1_DO
+Text Label 8200 4050 2    50   ~ 0
+I2C_SDA
+Text Label 8200 3450 2    50   ~ 0
+UART_TX
+Text Label 8200 3550 2    50   ~ 0
+UART_RX
+Text Label 8200 4150 2    50   ~ 0
+I2C_SCL
+Wire Wire Line
+	7200 3450 8200 3450
+Wire Wire Line
+	7200 3550 8200 3550
+Wire Wire Line
+	7200 3650 8200 3650
+Wire Wire Line
+	7200 3750 8200 3750
+Wire Wire Line
+	7200 3850 8200 3850
+Wire Wire Line
+	7200 3950 8200 3950
+Wire Wire Line
+	7200 4050 8200 4050
+Wire Wire Line
+	7200 4150 8200 4150
+Text Label 8850 3050 0    50   ~ 0
+SPI0_SCK
+Text Label 8850 3150 0    50   ~ 0
+SPI0_DO
+Text Label 8850 3250 0    50   ~ 0
+SPI0_DI
+Text Label 8850 3350 0    50   ~ 0
+SPI0_SS
+Wire Wire Line
+	8850 3050 9400 3050
+Wire Wire Line
+	8850 3150 9400 3150
+Wire Wire Line
+	8850 3250 9400 3250
+Wire Wire Line
+	8850 3350 9400 3350
+Wire Wire Line
+	7200 4250 8200 4250
+Text Label 8200 4250 2    50   ~ 0
+RFM_IRQ
+Text Label 10650 3750 0    50   ~ 0
+RFM_IRQ
+Text Label 8850 3550 0    50   ~ 0
+RFM_RESET
+Text Label 6350 3750 2    50   ~ 0
+RFM_RESET
 $EndSCHEMATC
