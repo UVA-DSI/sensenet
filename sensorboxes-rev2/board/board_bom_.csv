@@ -1,0 +1,49 @@
+Component,Description,Part,References,Value,Footprint,Quantity Per PCB,Datasheet,Rnom
+1,Antenna,Antenna,AE1,Antenna,,1,~,
+2,Unpolarized capacitor,C,C3 C4 C5 C8 C12 C13 C15,100n,,7,~,
+3,Unpolarized capacitor,C,C1 C10 C14,10u,,3,~,
+4,Unpolarized capacitor,C,C11,1u,,1,~,
+5,Unpolarized capacitor,C,C2,2.2u,,1,~,
+6,Unpolarized capacitor,C,C7,4.7u,,1,~,
+7,Unpolarized capacitor,C,C6 C9,C,,2,~,
+8,Light emitting diode,LED,D2,LED,,1,~,
+9,Schottky diode,D_Schottky,D1,MBR120,,1,~,
+10,Ferrite bead,Ferrite_Bead,FB1,FBMH3216HM221NT,,1,~,
+11,"Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_01x02,J3,Conn_01x02,,1,~,
+12,"Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_01x03,J4,Conn_01x03,,1,~,
+13,"Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_01x06,J5,Conn_01x06,,1,~,
+14,"Generic connector, single row, 01x13, script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_01x13,J6,Conn_01x13,,1,~,
+15,"Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface",Conn_ARM_JTAG_SWD_10,J1,Conn_ARM_JTAG_SWD_10,,1,http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf,
+16,USB Micro Type B connector,USB_B_Micro,J2,USB_B_Micro,,1,~,
+17,"Jumper, 3-pole, both open",Jumper_3_Open,JP1,Jumper_3_Open,,1,~,
+18,"Jumper, normally closed, small symbol",Jumper_NC_Small,JP2,Jumper_NC_Small,,1,~,
+19,Inductor,L,L1,10u,,1,~,
+20,"P-MOSFET transistor, gate/drain/source",Q_PMOS_GDS,Q1 Q2,Si3469DV,,2,~,
+21,Resistor,R,R3 R6,10k,,2,~,
+22,Resistor,R,R1,1k,,1,~,
+23,Resistor,R,R5,2.2k,,1,~,
+24,Resistor,R,R2 R7,330,,2,~,
+25,Resistor,R,R4,4.7,,1,~,
+26,"Push button switch, generic, two pins",SW_Push,SW1,SW_Push,,1,~,
+27,"Temperature dependent resistor, negative temperature coefficient",Thermistor_NTC,TH1,NTHS0402N02N1002F,,1,~,10k
+28,"SAM L21 Microchip SMART ARM-based Flash MCU, 48Mhz, 256K Flash, 32K SRAM, TQFP32",ATSAML21E18B-AUT,U4,ATSAML21E18B-AUT,TQFP-32_7x7mm_P0.8mm,1,http://ww1.microchip.com/downloads/en/DeviceDoc/60001477A.pdf,
+29,,LTC4070,U2,LTC4070,,1,,
+30,,MCP1812,U1,MCP1812A,,1,,
+31,"Low power long range transceiver module, SPI and parallel interface, 915 MHz, spreading factor 6 to12, bandwith 7.8 to 500kHz, -111 to -148 dBm, SMD-16, DIP-16",RFM95W-915S2,U3,RFM95W-915S2,,1,https://www.hoperf.com/data/upload/portal/20181127/5bfcbea20e9ef.pdf,
+32,"Three pin crystal, GND on pin 2",Crystal_GND2,Y1,MS1V-T1K,,1,~,
+
+
+
+
+
+Component Groups:,32
+Component Count:,44
+Fitted Components:,44
+Number of PCBs:,1
+Total components:,44
+Schematic Version:,
+Schematic Date:,
+PCB Variant:,default
+BoM Date:,05/14/2020 9:31:59 PM
+Schematic Source:,board.sch
+KiCad Version:,Eeschema (5.1.2)-2
