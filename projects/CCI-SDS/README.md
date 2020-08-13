@@ -23,7 +23,7 @@ We collected PM2.5 (ppm), PM10 (ppm), temperature (C), CO2 (ppm) and humidity (%
 the period of five months. This data can be obtained directly from our visualization tool below, or [already 
 cleaned and ready to use in this directory](https://github.com/thejimster82/CvilleAQ/tree/master/notebooks/data).
 
-Our data is open according to the ["Open Data" definition](http://opendatahandbook.org/guide/en/what-is-open-data/).
+For information on how to query for data on Influxdb, please use this [notebook](https://github.com/UVA-DSI/sensenet/blob/master/projects/CCI-SDS/notebooks/influxdb-sensenet-example.ipynb). Our data is made "open" according to the ["Open Data" definition](http://opendatahandbook.org/guide/en/what-is-open-data/).
 
 ## Data Visualization
 
@@ -55,9 +55,9 @@ We have deployed a sensor box equipped with the following hardware:
 * Voltaic 1W solar panel + 4000mAh battery
 
 The firmware can be found in the 'sensorbox' folder. The 'hardware' folder contains the connectors
-and 'motherboard' PCBs we generated for this project. Here is picture of [our first prototype, v.1](images/proto_v1.png),
-and here is another of our revised prototype [v.2](images/proto_v2.png). We also included more pictures  
-of the hardware in the folder 'images'.
+and 'motherboard' PCBs we generated for this project. Here is picture of [our first prototype, v.1](images/proto_v1.jpg),
+and here is another of our revised prototype [v.2](images/proto_v2.jpg). We also included more pictures  
+of the hardware in the folder "images".
 
 ### How to Use the Sensor Box
 
@@ -79,7 +79,7 @@ for its functioning in our set-up.](https://voltaicsystems.com/always-on-batteri
 
 ## Firmware
 
-All the code is located in the folder 'sensorbox' under the name of 'sbox0' (our first prototype).
+All the code is located in the folder "sensorbox" under the name of "sbox0".
 
 ## Data Analysis
 
@@ -89,8 +89,7 @@ creating a geospatial model for evaluating how certain concentrations might affe
 the city and certain vulnerable groups; and 3) experiment with ML-based models for outlier detection
 and sensor calibration.
 
-For more information about data analytics, check the Jupyter notebooks we prepared under the folder: 
-['notebooks'](https://github.com/UVA-DSI/sensenet/blob/master/projects/CCI-SDS/notebooks/influxdb-sensenet-example.ipynb).
+For more information about data analytics, check the Jupyter notebooks we prepared under the folder "notebooks".
 
 ## Commitment to Data Ethics, Privacy & Security
 
