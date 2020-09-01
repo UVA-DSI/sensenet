@@ -26,8 +26,8 @@ We use different sensors, microcontrollers, and tools for different
 implementations. You can get more information about each set-up following
 the links below:
 
-* [Smartcville + School of Data Science](projects/CCI-SDS/README.md)
-* Community Sense
+* [Networked Public Spaces, 2020-2021](projects/NPS/README.md)
+* [Smartcville + School of Data Science, 2019-2020](projects/CCI-SDS/README.md)
 
 ## Contact and licensing info
 
