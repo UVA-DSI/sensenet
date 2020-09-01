@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:board-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -42,10 +41,6 @@ Text HLabel 4300 4500 0    50   BiDi ~ 0
 D1
 Text HLabel 4300 4400 0    50   BiDi ~ 0
 D0
-Text Label 3300 3150 0    50   ~ 0
-XOUT32
-Text Label 2800 3150 2    50   ~ 0
-XIN32
 Text Label 5150 3700 2    50   ~ 0
 XOUT32
 Text Label 5150 3600 2    50   ~ 0
@@ -92,7 +87,7 @@ U 1 1 5EBE3B63
 P 3250 4450
 F 0 "C8" H 3365 4496 50  0000 L CNN
 F 1 "100n" H 3365 4405 50  0000 L CNN
-F 2 "" H 3288 4300 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3288 4300 50  0001 C CNN
 F 3 "~" H 3250 4450 50  0001 C CNN
 	1    3250 4450
 	1    0    0    -1  
@@ -103,7 +98,7 @@ U 1 1 5EBE2AAD
 P 2850 4450
 F 0 "C7" H 2965 4496 50  0000 L CNN
 F 1 "4.7u" H 2965 4405 50  0000 L CNN
-F 2 "" H 2888 4300 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 2888 4300 50  0001 C CNN
 F 3 "~" H 2850 4450 50  0001 C CNN
 	1    2850 4450
 	1    0    0    -1  
@@ -170,53 +165,6 @@ F 3 "" H 2800 3650 50  0001 C CNN
 	1    2800 3650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2800 3150 2900 3150
-Wire Wire Line
-	2800 3250 2800 3150
-Wire Wire Line
-	3300 3150 3200 3150
-Wire Wire Line
-	3300 3250 3300 3150
-$Comp
-L Device:C C?
-U 1 1 5F3C031F
-P 2800 3400
-AR Path="/5F3C031F" Ref="C?"  Part="1" 
-AR Path="/5F3BBDAE/5F3C031F" Ref="C6"  Part="1" 
-F 0 "C6" H 2686 3354 50  0000 R CNN
-F 1 "C" H 2686 3445 50  0000 R CNN
-F 2 "" H 2838 3250 50  0001 C CNN
-F 3 "~" H 2800 3400 50  0001 C CNN
-	1    2800 3400
-	1    0    0    1   
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 5F3C0319
-P 3300 3400
-AR Path="/5F3C0319" Ref="C?"  Part="1" 
-AR Path="/5F3BBDAE/5F3C0319" Ref="C9"  Part="1" 
-F 0 "C9" H 3185 3354 50  0000 R CNN
-F 1 "C" H 3185 3445 50  0000 R CNN
-F 2 "" H 3338 3250 50  0001 C CNN
-F 3 "~" H 3300 3400 50  0001 C CNN
-	1    3300 3400
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:Crystal_GND2 Y?
-U 1 1 5F3C0313
-P 3050 3150
-AR Path="/5F3C0313" Ref="Y?"  Part="1" 
-AR Path="/5F3BBDAE/5F3C0313" Ref="Y1"  Part="1" 
-F 0 "Y1" H 3050 3418 50  0000 C CNN
-F 1 "MS1V-T1K" H 3050 3327 50  0000 C CNN
-F 2 "" H 3050 3150 50  0001 C CNN
-F 3 "~" H 3050 3150 50  0001 C CNN
-	1    3050 3150
-	1    0    0    -1  
-$EndComp
 Text HLabel 4300 2500 0    50   Input ~ 0
 VDDIN
 Text HLabel 7100 2500 2    50   Input ~ 0
@@ -249,7 +197,7 @@ AR Path="/5F3C023C" Ref="C?"  Part="1"
 AR Path="/5F3BBDAE/5F3C023C" Ref="C15"  Part="1" 
 F 0 "C15" H 7065 2796 50  0000 L CNN
 F 1 "100n" H 7065 2705 50  0000 L CNN
-F 2 "" H 6988 2600 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 6988 2600 50  0001 C CNN
 F 3 "~" H 6950 2750 50  0001 C CNN
 	1    6950 2750
 	1    0    0    -1  
@@ -284,7 +232,7 @@ AR Path="/5F3C022E" Ref="C?"  Part="1"
 AR Path="/5F3BBDAE/5F3C022E" Ref="C14"  Part="1" 
 F 0 "C14" H 6665 2796 50  0000 L CNN
 F 1 "10u" H 6665 2705 50  0000 L CNN
-F 2 "" H 6588 2600 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 6588 2600 50  0001 C CNN
 F 3 "~" H 6550 2750 50  0001 C CNN
 	1    6550 2750
 	1    0    0    -1  
@@ -341,7 +289,7 @@ AR Path="/5F3C02C3" Ref="C?"  Part="1"
 AR Path="/5F3BBDAE/5F3C02C3" Ref="C11"  Part="1" 
 F 0 "C11" H 5565 1946 50  0000 L CNN
 F 1 "1u" H 5565 1855 50  0000 L CNN
-F 2 "" H 5488 1750 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5488 1750 50  0001 C CNN
 F 3 "~" H 5450 1900 50  0001 C CNN
 	1    5450 1900
 	1    0    0    -1  
@@ -354,7 +302,7 @@ AR Path="/5F3C02BC" Ref="FB?"  Part="1"
 AR Path="/5F3BBDAE/5F3C02BC" Ref="FB1"  Part="1" 
 F 0 "FB1" V 4426 2500 50  0000 C CNN
 F 1 "FBMH3216HM221NT" V 4517 2500 50  0000 C CNN
-F 2 "" V 4630 2500 50  0001 C CNN
+F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 4630 2500 50  0001 C CNN
 F 3 "~" H 4700 2500 50  0001 C CNN
 	1    4700 2500
 	0    1    1    0   
@@ -432,7 +380,7 @@ AR Path="/5F3C028A" Ref="C?"  Part="1"
 AR Path="/5F3BBDAE/5F3C028A" Ref="C13"  Part="1" 
 F 0 "C13" H 5915 1946 50  0000 L CNN
 F 1 "100n" H 5915 1855 50  0000 L CNN
-F 2 "" H 5838 1750 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5838 1750 50  0001 C CNN
 F 3 "~" H 5800 1900 50  0001 C CNN
 	1    5800 1900
 	1    0    0    -1  
@@ -445,7 +393,7 @@ AR Path="/5F3C0284" Ref="L?"  Part="1"
 AR Path="/5F3BBDAE/5F3C0284" Ref="L1"  Part="1" 
 F 0 "L1" H 6103 1696 50  0000 L CNN
 F 1 "10u" H 6103 1605 50  0000 L CNN
-F 2 "" H 6050 1650 50  0001 C CNN
+F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 6050 1650 50  0001 C CNN
 F 3 "~" H 6050 1650 50  0001 C CNN
 	1    6050 1650
 	0    1    -1   0   
@@ -461,7 +409,7 @@ AR Path="/5F3BBDAE/5F3C0276" Ref="U4"  Part="1"
 F 0 "U4" H 6150 3950 50  0000 C CNN
 F 1 "ATSAML21E18B-AUT" H 6150 3850 50  0000 C CNN
 F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 7150 5100 50  0001 C CNN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/60001477A.pdf" H 6150 4200 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/SAM_L21_Family_DataSheet_DS60001477C.pdf" H 6150 4200 50  0001 C CNN
 	1    6150 4200
 	1    0    0    -1  
 $EndComp
@@ -473,7 +421,7 @@ AR Path="/5F3C0270" Ref="C?"  Part="1"
 AR Path="/5F3BBDAE/5F3C0270" Ref="C12"  Part="1" 
 F 0 "C12" H 5565 2796 50  0000 L CNN
 F 1 "100n" H 5565 2705 50  0000 L CNN
-F 2 "" H 5488 2600 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5488 2600 50  0001 C CNN
 F 3 "~" H 5450 2750 50  0001 C CNN
 	1    5450 2750
 	-1   0    0    -1  
@@ -503,7 +451,7 @@ AR Path="/5F3C0262" Ref="C?"  Part="1"
 AR Path="/5F3BBDAE/5F3C0262" Ref="C10"  Part="1" 
 F 0 "C10" H 5115 2796 50  0000 L CNN
 F 1 "10u" H 5115 2705 50  0000 L CNN
-F 2 "" H 5038 2600 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5038 2600 50  0001 C CNN
 F 3 "~" H 5000 2750 50  0001 C CNN
 	1    5000 2750
 	-1   0    0    -1  
@@ -613,4 +561,61 @@ Wire Wire Line
 Connection ~ 5750 2500
 Wire Wire Line
 	5750 2500 5950 2500
+Connection ~ 2800 3150
+Wire Wire Line
+	2800 3150 2650 3150
+Connection ~ 3300 3150
+Wire Wire Line
+	3300 3150 3450 3150
+$Comp
+L Device:Crystal_GND2 Y?
+U 1 1 5F3C0313
+P 3050 3150
+AR Path="/5F3C0313" Ref="Y?"  Part="1" 
+AR Path="/5F3BBDAE/5F3C0313" Ref="Y1"  Part="1" 
+F 0 "Y1" H 3050 3418 50  0000 C CNN
+F 1 "MS1V-T1K 32mhz" H 3050 3327 50  0000 C CNN
+F 2 "Crystals:Crystal_SMD_TXC_9HT11-2pin_2.0x1.2mm_HandSoldering" H 3050 3150 50  0001 C CNN
+F 3 "~" H 3050 3150 50  0001 C CNN
+	1    3050 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5F3C0319
+P 3300 3400
+AR Path="/5F3C0319" Ref="C?"  Part="1" 
+AR Path="/5F3BBDAE/5F3C0319" Ref="C9"  Part="1" 
+F 0 "C9" H 3185 3354 50  0000 R CNN
+F 1 "18pF NPO" H 3185 3445 50  0000 R CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3338 3250 50  0001 C CNN
+F 3 "~" H 3300 3400 50  0001 C CNN
+	1    3300 3400
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5F3C031F
+P 2800 3400
+AR Path="/5F3C031F" Ref="C?"  Part="1" 
+AR Path="/5F3BBDAE/5F3C031F" Ref="C6"  Part="1" 
+F 0 "C6" H 2686 3354 50  0000 R CNN
+F 1 "18pF NPO" H 2686 3445 50  0000 R CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 2838 3250 50  0001 C CNN
+F 3 "~" H 2800 3400 50  0001 C CNN
+	1    2800 3400
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	3300 3250 3300 3150
+Wire Wire Line
+	3300 3150 3200 3150
+Wire Wire Line
+	2800 3250 2800 3150
+Wire Wire Line
+	2800 3150 2900 3150
+Text Label 2750 3150 2    50   ~ 0
+XIN32
+Text Label 3400 3150 0    50   ~ 0
+XOUT32
 $EndSCHEMATC
