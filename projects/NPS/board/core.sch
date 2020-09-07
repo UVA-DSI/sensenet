@@ -136,21 +136,6 @@ F 3 "" H 3300 3650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3050 3350 3050 3650
-$Comp
-L power:GND #PWR?
-U 1 1 5F3C0330
-P 3050 3650
-AR Path="/5F3C0330" Ref="#PWR?"  Part="1" 
-AR Path="/5F3BBDAE/5F3C0330" Ref="#PWR028"  Part="1" 
-F 0 "#PWR028" H 3050 3400 50  0001 C CNN
-F 1 "GND" H 3055 3477 50  0000 C CNN
-F 2 "" H 3050 3650 50  0001 C CNN
-F 3 "" H 3050 3650 50  0001 C CNN
-	1    3050 3650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
 	2800 3650 2800 3550
 $Comp
 L power:GND #PWR?
@@ -568,14 +553,14 @@ Connection ~ 3300 3150
 Wire Wire Line
 	3300 3150 3450 3150
 $Comp
-L Device:Crystal_GND2 Y?
+L Device:Crystal Y?
 U 1 1 5F3C0313
 P 3050 3150
 AR Path="/5F3C0313" Ref="Y?"  Part="1" 
 AR Path="/5F3BBDAE/5F3C0313" Ref="Y1"  Part="1" 
 F 0 "Y1" H 3050 3418 50  0000 C CNN
-F 1 "MS1V-T1K 32mhz" H 3050 3327 50  0000 C CNN
-F 2 "Crystals:Crystal_SMD_TXC_9HT11-2pin_2.0x1.2mm_HandSoldering" H 3050 3150 50  0001 C CNN
+F 1 "HC49S" H 3050 3327 50  0000 C CNN
+F 2 "Crystal:Crystal_HC49-U_Vertical" H 3050 3150 50  0001 C CNN
 F 3 "~" H 3050 3150 50  0001 C CNN
 	1    3050 3150
 	1    0    0    -1  
@@ -618,4 +603,8 @@ Text Label 2750 3150 2    50   ~ 0
 XIN32
 Text Label 3400 3150 0    50   ~ 0
 XOUT32
+Text Notes 3450 3750 0    50   ~ 0
+! recalculate w/ load \ncapacitance value \nfrom datasheet !
+Text Notes 8900 3550 0    50   ~ 0
+OBS: Pins are configurable, suggested use below
 $EndSCHEMATC
