@@ -18,6 +18,11 @@ We are using the SAML21 Xplained board for testing purposes. The information
 on how to flash the bootloader we use on this board can be found at 
 [SAML21-XPLAINED folder](SAML21-xplained-board/README.md).
 
+## Installations
+
+Ostenda Illuminata is the first installation of this project. Source code
+can be found in the folder `ostenda-esp32s`.
+
 ## Dev team
 
 Our team is composed by:
