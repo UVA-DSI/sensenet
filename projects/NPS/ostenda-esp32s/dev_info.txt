@@ -6,5 +6,5 @@ DEV_clock =
 DEV_ID = ostenda0 
 LOC = tree0
 
-SENSOR1 = "hall_sensor" 
-SENSOR1_TOPIC   "/ostenda0/tree0/hall"
+SENSOR1 = "MEMS_I2S_MIC" 
+SENSOR1_TOPIC   "/ostenda0/tree0/dBA"
