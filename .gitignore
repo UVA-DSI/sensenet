@@ -8,6 +8,7 @@
 *-cache.lib
 *-rescue.lib
 *.kicad_pcb-bak
+*.sch-bak
 _saved_*.sch
 file[A-F0-9][A-F0-9][A-F0-9][A-F0-9][A-F0-9][A-F0-9][A-F0-9][A-F0-9].sch
 /projects/NPS/board/fp-info-cache
