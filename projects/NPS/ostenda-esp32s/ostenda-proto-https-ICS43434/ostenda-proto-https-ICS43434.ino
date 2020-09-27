@@ -255,7 +255,7 @@ WiFiClientSecure ESPclient;
 PubSubClient client(ESPclient);
 
 // define MQTT topics
-#define SENSOR1_TOPIC   "/ostenda0/tree1/dBA"
+#define SENSOR1_TOPIC   "/ostenda0/tree5/dBA"
 
 void mqtt_connect() {
   Serial.println("MQTT connecting...");

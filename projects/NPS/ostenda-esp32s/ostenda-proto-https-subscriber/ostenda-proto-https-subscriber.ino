@@ -2,7 +2,7 @@
  * Ostenda proto, v.0.5
  * 
  * DEV_name = "ESP32S"
- * DEV_ID = "esp32s-aschool-a3"
+ * DEV_ID = "esp32s-aschool-a5"
  * LOC = loc0
  * TOPIC = ostenda0/tree1/avg
  *  
@@ -57,7 +57,7 @@ WiFiClientSecure ESPclient;
 PubSubClient client(ESPclient);
 
 // define MQTT topics
-#define SENSOR1_TOPIC   "/ostenda0/tree1/avg"
+#define SENSOR1_TOPIC   "/ostenda0/tree5/avg"
 
 void mqtt_connect() {
   Serial.println("MQTT connecting...");
