@@ -394,14 +394,14 @@ F 3 "http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresigh
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J4
+L Connector_Generic:Conn_01x05 J4
 U 1 1 5ECA4A33
-P 1365 7470
-F 0 "J4" H 1445 7512 50  0000 L CNN
-F 1 "Conn_01x03" H 1445 7421 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 1365 7470 50  0001 C CNN
-F 3 "~" H 1365 7470 50  0001 C CNN
-	1    1365 7470
+P 1325 7387
+F 0 "J4" H 1405 7429 50  0000 L CNN
+F 1 "Conn_01x05" H 1405 7338 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 1325 7387 50  0001 C CNN
+F 3 "~" H 1325 7387 50  0001 C CNN
+	1    1325 7387
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -611,16 +611,16 @@ RFM_DIO3
 Text Label 3120 6665 0    50   ~ 0
 RFM_DIO5
 Wire Wire Line
-	1015 7370 1165 7370
+	975  7287 1125 7287
 Wire Wire Line
-	1015 7470 1165 7470
-Text Label 1015 7370 2    50   ~ 0
+	975  7387 1125 7387
+Text Label 975  7287 2    50   ~ 0
 RFM_DIO2
-Text Label 1015 7470 2    50   ~ 0
+Text Label 975  7387 2    50   ~ 0
 RFM_DIO3
 Wire Wire Line
-	1015 7570 1165 7570
-Text Label 1015 7570 2    50   ~ 0
+	975  7487 1125 7487
+Text Label 975  7487 2    50   ~ 0
 RFM_DIO5
 Wire Wire Line
 	3450 1100 3450 1200
@@ -890,12 +890,12 @@ Wire Notes Line
 Text Notes 1565 4785 0    50   ~ 0
 Cortex Debug Connector
 $Comp
-L Connector_Generic:Conn_01x06 J5
+L Connector_Generic:Conn_01x08 J5
 U 1 1 5ED682BE
 P 9430 3780
 F 0 "J5" H 9510 3772 50  0000 L CNN
-F 1 "Conn_01x06" H 9510 3681 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 9430 3780 50  0001 C CNN
+F 1 "Conn_01x08" H 9510 3681 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 9430 3780 50  0001 C CNN
 F 3 "~" H 9430 3780 50  0001 C CNN
 	1    9430 3780
 	1    0    0    -1  
@@ -1172,7 +1172,7 @@ U 1 1 5EEC0115
 P 10650 1650
 F 0 "SW1" V 10604 1798 50  0000 L CNN
 F 1 "SW_Push" V 10700 1800 50  0000 L CNN
-F 2 "Button_Switch_SMD:SW_Push_SPST_NO_Alps_SKRK" H 10650 1850 50  0001 C CNN
+F 2 "Button_Switch_SMD:SW_SPST_PTS645" H 10650 1850 50  0001 C CNN
 F 3 "~" H 10650 1850 50  0001 C CNN
 	1    10650 1650
 	0    1    -1   0   
@@ -1188,4 +1188,12 @@ Wire Wire Line
 Connection ~ 10000 1850
 Wire Wire Line
 	10000 1850 10000 1900
+Text Label 9230 3480 2    50   ~ 0
++3V3
+Text Label 9230 4180 2    50   ~ 0
+GND
+Text Label 1125 7187 2    50   ~ 0
++3V3
+Text Label 1125 7587 2    50   ~ 0
+GND
 $EndSCHEMATC
