@@ -2,19 +2,19 @@
 
 In this document, we describe the steps for setting up the SAML21 Xplained Pro dev board.
 
-## Configuration
+## Bootloader Installation
 
 We must use a set of tools for writing the bootloader and firmware files to the SAML21 for prototyping purposes. Here are the steps to get it up and running:
 
 **Dependencies**
 
 - OpenOCD v.0.10.0 or superior
-- [GCC-arm-none-eabi-7-2017-q4-major](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) (this is included in the Mattair fork of ArduinoCore)
+- [GCC-arm-none-eabi-7-2017-q4-major](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) (this is also included in the official fork of ArduinoCore-SAMD, installable through the Arduino IDE Boards Manager)
 - [BOSSA](https://github.com/shumatech/BOSSA/releases)
 - Debian 10 (or any other distro) w/ extra packages: 'libwxgtk3.0-dev' and 'libreadline-dev'
 - [Mattair's fork of ArduinoCore w/ SAML21 support](https://github.com/mattairtech/ArduinoCore-samd) (install instructions are towards the bottom of the README.md of that repository)
 
-### Build the Bootloader
+### Building the Bootloader
 
 *Note: there are precompiled binaries included in the `bootloader` directory*
 
@@ -26,7 +26,7 @@ $ BOARD_ID=XPLAINED_SAML21 MCU=SAML21J18B make all mostly_clean
 
 After a few moments, you will have the bootloader (8K) with USB terminal support ready in the file `sam_ba_XPLAINED_SAML21_SAML21J18B.bin`.
 
-### Run OpenOCD
+### Runing OpenOCD
 
 #### Using Atmel EDBG
 
