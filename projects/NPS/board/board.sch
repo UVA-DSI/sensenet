@@ -230,7 +230,7 @@ L Device:R R4
 U 1 1 5EB4F0D0
 P 5750 1100
 F 0 "R4" V 5543 1100 50  0000 C CNN
-F 1 "4.7" V 5634 1100 50  0000 C CNN
+F 1 "4.7k" V 5634 1100 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 5680 1100 50  0001 C CNN
 F 3 "~" H 5750 1100 50  0001 C CNN
 	1    5750 1100
@@ -986,7 +986,7 @@ GND
 Text Label 1125 7187 2    50   ~ 0
 +3V3
 Wire Wire Line
-	2870 6465 3515 6465
+	2870 6465 3320 6465
 $Comp
 L power:GND #PWR0101
 U 1 1 5EEDF79C
@@ -1202,4 +1202,22 @@ Text Label 10280 4815 0    50   ~ 0
 GND
 Text Label 1125 7587 2    50   ~ 0
 GND
+$Comp
+L Connector_Generic:Conn_01x01 J8
+U 1 1 5FA878E8
+P 3734 6242
+F 0 "J8" H 3814 6284 50  0000 L CNN
+F 1 "Wire Antenna" H 3814 6193 50  0000 L CNN
+F 2 "Connector_Wire:SolderWire-0.75sqmm_1x01_D1.25mm_OD2.3mm" H 3734 6242 50  0001 C CNN
+F 3 "~" H 3734 6242 50  0001 C CNN
+	1    3734 6242
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3534 6242 3320 6242
+Wire Wire Line
+	3320 6242 3320 6465
+Connection ~ 3320 6465
+Wire Wire Line
+	3320 6465 3515 6465
 $EndSCHEMATC
