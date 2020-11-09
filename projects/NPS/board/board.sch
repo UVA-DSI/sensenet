@@ -36,17 +36,6 @@ F 3 "" H 6100 1150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensenet_board_part_subs:MCP1812 U1
-U 1 1 5EB19415
-P 1850 1650
-F 0 "U1" H 1850 1992 50  0000 C CNN
-F 1 "MCP1812A" H 1850 1901 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 1800 1700 50  0001 C CNN
-F 3 "" H 1800 1700 50  0001 C CNN
-	1    1850 1650
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:D_Schottky D1
 U 1 1 5EB19FD2
 P 1100 1300
@@ -76,16 +65,7 @@ Wire Wire Line
 	850  1550 1100 1550
 Wire Wire Line
 	1100 1550 1100 1450
-Wire Wire Line
-	1450 1550 1400 1550
 Connection ~ 1100 1550
-Wire Wire Line
-	1450 1650 1400 1650
-Wire Wire Line
-	1400 1650 1400 1550
-Connection ~ 1400 1550
-Wire Wire Line
-	1400 1550 1100 1550
 $Comp
 L power:GND #PWR02
 U 1 1 5EB23642
@@ -104,16 +84,16 @@ Wire Wire Line
 $Comp
 L power:GND #PWR03
 U 1 1 5EB249D9
-P 1850 2050
-F 0 "#PWR03" H 1850 1800 50  0001 C CNN
-F 1 "GND" H 1855 1877 50  0000 C CNN
-F 2 "" H 1850 2050 50  0001 C CNN
-F 3 "" H 1850 2050 50  0001 C CNN
-	1    1850 2050
-	1    0    0    -1  
+P 1850 1150
+F 0 "#PWR03" H 1850 900 50  0001 C CNN
+F 1 "GND" H 1855 977 50  0000 C CNN
+F 2 "" H 1850 1150 50  0001 C CNN
+F 3 "" H 1850 1150 50  0001 C CNN
+	1    1850 1150
+	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	1850 2050 1850 1950
+	1850 1150 1850 1250
 $Comp
 L Device:C C2
 U 1 1 5EB2561F
@@ -573,8 +553,6 @@ Wire Wire Line
 	6750 1100 7000 1100
 Text Notes 6750 2400 0    50   ~ 0
 ADJ:\n3+GND = 4.2V, 3+VCC = 4.0V, NC = 4.1V
-Wire Wire Line
-	2400 1550 2250 1550
 Connection ~ 2400 1550
 Wire Wire Line
 	2400 1550 2400 1650
@@ -1158,7 +1136,7 @@ $EndComp
 Wire Wire Line
 	9085 885  9085 835 
 Text Label 9085 835  0    50   ~ 0
-D4
+A4
 $Comp
 L power:GND #PWR020
 U 1 1 5F0F0174
@@ -1220,4 +1198,19 @@ Wire Wire Line
 Connection ~ 3320 6465
 Wire Wire Line
 	3320 6465 3515 6465
+Wire Wire Line
+	2400 1550 2250 1550
+$Comp
+L sensenet_board_part_subs:MCP1812AT-033 U1
+U 1 1 5EB19415
+P 1850 1550
+F 0 "U1" H 1850 1892 50  0000 C CNN
+F 1 "MCP1812A" H 1850 1801 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23_Handsoldering" H 1800 1600 50  0001 C CNN
+F 3 "" H 1800 1600 50  0001 C CNN
+	1    1850 1550
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1100 1550 1450 1550
 $EndSCHEMATC
