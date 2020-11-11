@@ -162,7 +162,7 @@ Wire Wire Line
 Wire Wire Line
 	3450 1200 3350 1200
 $Comp
-L Connector:USB_B_Micro J2
+L board-rescue:USB_B_Micro-Connector J2
 U 1 1 5EB15C29
 P 3050 1400
 F 0 "J2" H 3107 1867 50  0000 C CNN
@@ -210,7 +210,7 @@ L Device:R R4
 U 1 1 5EB4F0D0
 P 5750 1100
 F 0 "R4" V 5543 1100 50  0000 C CNN
-F 1 "4.7k" V 5634 1100 50  0000 C CNN
+F 1 "400" V 5634 1100 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 5680 1100 50  0001 C CNN
 F 3 "~" H 5750 1100 50  0001 C CNN
 	1    5750 1100
@@ -239,8 +239,8 @@ Text Label 3450 1400 0    50   ~ 0
 D+
 Text Label 3450 1500 0    50   ~ 0
 D-
-Text Notes 6050 1000 0    50   ~ 0
-400 = 5 mA\n40 = 50 mA\n4 = 500 mA
+Text Notes 6929 2427 0    50   ~ 0
+400 = 5 mA\n40 = 50 mA\n4 = 500 mA\nTODO: calculate + accurate values\n(batt: 4,2v 1000mAh, 1A max. current input)
 $Comp
 L power:GND #PWR019
 U 1 1 5EB73A75
@@ -268,7 +268,7 @@ L Device:Q_PMOS_GDS Q1
 U 1 1 5EB54A1B
 P 6900 1400
 F 0 "Q1" H 7106 1400 50  0000 L CNN
-F 1 "Si3469DV" H 7100 1500 50  0000 L CNN
+F 1 "SI2365EDS" H 7100 1500 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:TSOT-23" H 7100 1500 50  0001 C CNN
 F 3 "~" H 6900 1400 50  0001 C CNN
 	1    6900 1400
@@ -279,7 +279,7 @@ L Device:Q_PMOS_GDS Q2
 U 1 1 5EB5B1CF
 P 7550 1200
 F 0 "Q2" H 7756 1154 50  0000 L CNN
-F 1 "Si3469DV" H 7756 1245 50  0000 L CNN
+F 1 "SI2365EDS" H 7756 1245 50  0000 L CNN
 F 2 "TO_SOT_Packages_SMD:TSOT-23" H 7750 1300 50  0001 C CNN
 F 3 "~" H 7550 1200 50  0001 C CNN
 	1    7550 1200
@@ -323,21 +323,8 @@ F 3 "~" H 10000 1600 50  0001 C CNN
 	1    10000 1600
 	-1   0    0    -1  
 $EndComp
-$Comp
-L Device:R R7
-U 1 1 5EED247B
-P 10200 1350
-F 0 "R7" V 9993 1350 50  0000 C CNN
-F 1 "330" V 10084 1350 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 10130 1350 50  0001 C CNN
-F 3 "~" H 10200 1350 50  0001 C CNN
-	1    10200 1350
-	0    -1   1    0   
-$EndComp
 Wire Wire Line
 	10000 1450 10000 1350
-Wire Wire Line
-	10000 1350 10050 1350
 Connection ~ 10000 1350
 $Comp
 L power:GND #PWR025
@@ -489,7 +476,7 @@ Wire Wire Line
 	1520 3955 1270 3955
 Text Notes 1950 750  0    50   ~ 0
 Power Supply (and Related Connectors)
-Text Notes 6750 2550 0    50   ~ 0
+Text Notes 6948 2815 0    50   ~ 0
 Battery Charging and Battery Disconnect
 Text Notes 2035 2650 0    50   ~ 0
 Breakouts & Connectors
@@ -551,7 +538,7 @@ Wire Wire Line
 Connection ~ 6750 1100
 Wire Wire Line
 	6750 1100 7000 1100
-Text Notes 6750 2400 0    50   ~ 0
+Text Notes 6948 2665 0    50   ~ 0
 ADJ:\n3+GND = 4.2V, 3+VCC = 4.0V, NC = 4.1V
 Connection ~ 2400 1550
 Wire Wire Line
@@ -945,8 +932,6 @@ $EndComp
 Wire Wire Line
 	10000 1750 10000 1850
 Wire Wire Line
-	10350 1350 10650 1350
-Wire Wire Line
 	10650 1350 10650 1450
 Wire Wire Line
 	10650 1850 10000 1850
@@ -1213,4 +1198,6 @@ F 3 "" H 1800 1600 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1100 1550 1450 1550
+Wire Wire Line
+	10000 1350 10650 1350
 $EndSCHEMATC

@@ -287,7 +287,7 @@ AR Path="/5F3C02BC" Ref="FB?"  Part="1"
 AR Path="/5F3BBDAE/5F3C02BC" Ref="FB1"  Part="1" 
 F 0 "FB1" V 4426 2500 50  0000 C CNN
 F 1 "FBMH3216HM221NT" V 4517 2500 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 4630 2500 50  0001 C CNN
+F 2 "Inductor_SMD:L_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 4630 2500 50  0001 C CNN
 F 3 "~" H 4700 2500 50  0001 C CNN
 	1    4700 2500
 	0    1    1    0   
@@ -378,7 +378,7 @@ AR Path="/5F3C0284" Ref="L?"  Part="1"
 AR Path="/5F3BBDAE/5F3C0284" Ref="L1"  Part="1" 
 F 0 "L1" H 6103 1696 50  0000 L CNN
 F 1 "10u" H 6103 1605 50  0000 L CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 6050 1650 50  0001 C CNN
+F 2 "Inductor_SMD:L_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 6050 1650 50  0001 C CNN
 F 3 "~" H 6050 1650 50  0001 C CNN
 	1    6050 1650
 	0    1    -1   0   
@@ -572,7 +572,7 @@ P 3300 3400
 AR Path="/5F3C0319" Ref="C?"  Part="1" 
 AR Path="/5F3BBDAE/5F3C0319" Ref="C9"  Part="1" 
 F 0 "C9" H 3185 3354 50  0000 R CNN
-F 1 "18pF NPO" H 3185 3445 50  0000 R CNN
+F 1 "22pF NPO" H 3185 3445 50  0000 R CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3338 3250 50  0001 C CNN
 F 3 "~" H 3300 3400 50  0001 C CNN
 	1    3300 3400
@@ -585,7 +585,7 @@ P 2800 3400
 AR Path="/5F3C031F" Ref="C?"  Part="1" 
 AR Path="/5F3BBDAE/5F3C031F" Ref="C6"  Part="1" 
 F 0 "C6" H 2686 3354 50  0000 R CNN
-F 1 "18pF NPO" H 2686 3445 50  0000 R CNN
+F 1 "22pF NPO" H 2686 3445 50  0000 R CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 2838 3250 50  0001 C CNN
 F 3 "~" H 2800 3400 50  0001 C CNN
 	1    2800 3400
@@ -603,8 +603,6 @@ Text Label 2750 3150 2    50   ~ 0
 XIN32
 Text Label 3400 3150 0    50   ~ 0
 XOUT32
-Text Notes 3450 3750 0    50   ~ 0
-! recalculate w/ load \ncapacitance value \nfrom datasheet !
 Text Notes 8900 3550 0    50   ~ 0
 OBS: Pins are configurable, suggested use below
 $EndSCHEMATC
