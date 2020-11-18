@@ -14,142 +14,49 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Text HLabel 8000 4300 2    50   BiDi ~ 0
-D11
+D12
 Text HLabel 8000 4200 2    50   BiDi ~ 0
-D10
+D11
 Text HLabel 8000 4100 2    50   BiDi ~ 0
-D9
+D10
 Text HLabel 8000 4000 2    50   BiDi ~ 0
-D8
+D9
 Text HLabel 8000 3900 2    50   BiDi ~ 0
-D7
+D8
 Text HLabel 8000 3800 2    50   BiDi ~ 0
-D6
+D7
 Text HLabel 8000 3700 2    50   BiDi ~ 0
-D5
+D6
 Text HLabel 8000 3600 2    50   BiDi ~ 0
-D4
+D5
 Wire Wire Line
 	7150 3700 8000 3700
 Wire Wire Line
 	7150 3600 8000 3600
 Text HLabel 4300 4700 0    50   BiDi ~ 0
-D3
+D4
 Text HLabel 4300 4600 0    50   BiDi ~ 0
-D2
+D3
 Text HLabel 4300 4500 0    50   BiDi ~ 0
-D1
+D2
 Text HLabel 4300 4400 0    50   BiDi ~ 0
-D0
+D1
 Text Label 5150 3700 2    50   ~ 0
 XOUT32
 Text Label 5150 3600 2    50   ~ 0
 XIN32
-Wire Wire Line
-	3250 4200 3250 4300
-Wire Wire Line
-	2850 4200 3250 4200
-Wire Wire Line
-	2850 4200 2850 4300
-Wire Wire Line
-	3250 4700 3250 4600
-$Comp
-L power:GND #PWR?
-U 1 1 5EBE54FE
-P 3250 4700
-AR Path="/5EBE54FE" Ref="#PWR?"  Part="1" 
-AR Path="/5F3BBDAE/5EBE54FE" Ref="#PWR029"  Part="1" 
-F 0 "#PWR029" H 3250 4450 50  0001 C CNN
-F 1 "GND" H 3255 4527 50  0000 C CNN
-F 2 "" H 3250 4700 50  0001 C CNN
-F 3 "" H 3250 4700 50  0001 C CNN
-	1    3250 4700
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	2850 4700 2850 4600
-$Comp
-L power:GND #PWR?
-U 1 1 5EBE54F7
-P 2850 4700
-AR Path="/5EBE54F7" Ref="#PWR?"  Part="1" 
-AR Path="/5F3BBDAE/5EBE54F7" Ref="#PWR027"  Part="1" 
-F 0 "#PWR027" H 2850 4450 50  0001 C CNN
-F 1 "GND" H 2855 4527 50  0000 C CNN
-F 2 "" H 2850 4700 50  0001 C CNN
-F 3 "" H 2850 4700 50  0001 C CNN
-	1    2850 4700
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C8
-U 1 1 5EBE3B63
-P 3250 4450
-F 0 "C8" H 3365 4496 50  0000 L CNN
-F 1 "100n" H 3365 4405 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3288 4300 50  0001 C CNN
-F 3 "~" H 3250 4450 50  0001 C CNN
-	1    3250 4450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C7
-U 1 1 5EBE2AAD
-P 2850 4450
-F 0 "C7" H 2965 4496 50  0000 L CNN
-F 1 "4.7u" H 2965 4405 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 2888 4300 50  0001 C CNN
-F 3 "~" H 2850 4450 50  0001 C CNN
-	1    2850 4450
-	1    0    0    -1  
-$EndComp
-Text HLabel 2600 4200 0    50   BiDi ~ 0
-A1
-Connection ~ 2850 4200
-Wire Wire Line
-	2600 4200 2850 4200
 Text HLabel 4900 4300 0    50   BiDi ~ 0
-A5
+A6
 Text HLabel 4900 4200 0    50   BiDi ~ 0
-A4
+A5
 Text HLabel 4900 4100 0    50   BiDi ~ 0
-A3
+A4
 Text HLabel 4900 4000 0    50   BiDi ~ 0
-A2
+A3
 Text HLabel 4900 3900 0    50   BiDi ~ 0
-A1
+A2
 Text HLabel 4900 3800 0    50   BiDi ~ 0
-A0
-Wire Wire Line
-	3300 3650 3300 3550
-$Comp
-L power:GND #PWR?
-U 1 1 5F3C0337
-P 3300 3650
-AR Path="/5F3C0337" Ref="#PWR?"  Part="1" 
-AR Path="/5F3BBDAE/5F3C0337" Ref="#PWR030"  Part="1" 
-F 0 "#PWR030" H 3300 3400 50  0001 C CNN
-F 1 "GND" H 3305 3477 50  0000 C CNN
-F 2 "" H 3300 3650 50  0001 C CNN
-F 3 "" H 3300 3650 50  0001 C CNN
-	1    3300 3650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2800 3650 2800 3550
-$Comp
-L power:GND #PWR?
-U 1 1 5F3C0329
-P 2800 3650
-AR Path="/5F3C0329" Ref="#PWR?"  Part="1" 
-AR Path="/5F3BBDAE/5F3C0329" Ref="#PWR026"  Part="1" 
-F 0 "#PWR026" H 2800 3400 50  0001 C CNN
-F 1 "GND" H 2805 3477 50  0000 C CNN
-F 2 "" H 2800 3650 50  0001 C CNN
-F 3 "" H 2800 3650 50  0001 C CNN
-	1    2800 3650
-	1    0    0    -1  
-$EndComp
+A1
 Text HLabel 4300 2500 0    50   Input ~ 0
 VDDIN
 Text HLabel 7100 2500 2    50   Input ~ 0
@@ -471,7 +378,7 @@ DM
 Text HLabel 7400 4500 2    50   BiDi ~ 0
 DP
 Text HLabel 7400 4600 2    50   BiDi ~ 0
-D12
+D13
 Wire Wire Line
 	5150 4800 4900 4800
 Text HLabel 4900 4800 0    50   Input ~ 0
@@ -484,34 +391,30 @@ Wire Wire Line
 	7400 4700 7150 4700
 Wire Wire Line
 	7400 4800 7150 4800
-Text Notes 6050 5650 0    50   ~ 0
-Core
-Text Notes 8900 4800 0    50   ~ 0
-Precondition: All SERCOMS are on Port Function C.\n\nSPI Config (DOPO = 0x0, DIPO = 0x3):\nSCK = PAD1, \nDO = PAD0,\nDI = PAD3, \nSS = PAD2\n\nI2C Config:\nSDA = PAD0,\nSCL = PAD1,\n\nUART Config (RXPO = 0x3, TXPO = 0x1):\nTX = PAD2,\nRX = PAD3\n
 Text Label 5150 4700 2    50   ~ 0
-SERCOM0.3_SPI0_DI
+SERIAL1_RX
 Text Label 5150 4600 2    50   ~ 0
-SERCOM0.2_SPI0_SS
+SERIAL1_TX
 Text Label 5150 4500 2    50   ~ 0
-SERCOM0.1_SPI0_SCK
+SPI1_SS
 Text Label 5150 4400 2    50   ~ 0
-SERCOM0.0_SPI0_DO
+SPI1_MISO
 Text Label 7150 4100 0    50   ~ 0
-SERCOM1.3_SPI1_DI
+SPI_CLK
 Text Label 7150 4000 0    50   ~ 0
-SERCOM1.2_SPI1_SS
+SPI_MOSI
 Text Label 7150 3900 0    50   ~ 0
-SERCOM1.1_SPI1_SCK
+SCLK
 Text Label 7150 3800 0    50   ~ 0
-SERCOM1.0_SPI1_DO
+SDA
 Text Label 7150 4200 0    50   ~ 0
-SERCOM3.0_I2C_SDA
+SPI_MISO
 Text Label 7150 3600 0    50   ~ 0
-SERCOM2.2_UART_TX
+RFM_RESET
 Text Label 7150 3700 0    50   ~ 0
-SERCOM2.3_UART_RX
+RFM_DIO0
 Text Label 7150 4300 0    50   ~ 0
-SERCOM3.1_I2C_SCL
+SPI_SS
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 5ECF1EAA
@@ -546,24 +449,69 @@ Wire Wire Line
 Connection ~ 5750 2500
 Wire Wire Line
 	5750 2500 5950 2500
-Connection ~ 2800 3150
-Wire Wire Line
-	2800 3150 2650 3150
-Connection ~ 3300 3150
-Wire Wire Line
-	3300 3150 3450 3150
 $Comp
-L Device:Crystal Y?
-U 1 1 5F3C0313
-P 3050 3150
-AR Path="/5F3C0313" Ref="Y?"  Part="1" 
-AR Path="/5F3BBDAE/5F3C0313" Ref="Y1"  Part="1" 
-F 0 "Y1" H 3050 3418 50  0000 C CNN
-F 1 "HC49S" H 3050 3327 50  0000 C CNN
-F 2 "Crystal:Crystal_HC49-U_Vertical" H 3050 3150 50  0001 C CNN
-F 3 "~" H 3050 3150 50  0001 C CNN
-	1    3050 3150
+L Device:R R8
+U 1 1 60EA4304
+P 8584 3542
+F 0 "R8" H 8654 3588 50  0000 L CNN
+F 1 "4.7k" H 8654 3497 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8514 3542 50  0001 C CNN
+F 3 "~" H 8584 3542 50  0001 C CNN
+	1    8584 3542
 	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R9
+U 1 1 60EA4845
+P 8921 3540
+F 0 "R9" H 8991 3586 50  0000 L CNN
+F 1 "4.7k" H 8991 3495 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8851 3540 50  0001 C CNN
+F 3 "~" H 8921 3540 50  0001 C CNN
+	1    8921 3540
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8921 3373 8921 3390
+Wire Wire Line
+	8340 3373 8584 3373
+Wire Wire Line
+	8584 3392 8584 3373
+Connection ~ 8584 3373
+Wire Wire Line
+	8584 3373 8921 3373
+Wire Wire Line
+	8584 3692 8584 3771
+Wire Wire Line
+	8921 3690 8921 3773
+Text Label 8584 3771 2    50   ~ 0
+D7
+Text Label 8921 3773 2    50   ~ 0
+D8
+Text HLabel 8340 3373 0    50   Input ~ 0
+VDDIN
+Text Label 3400 3150 0    50   ~ 0
+XOUT32
+Wire Wire Line
+	2800 3150 2900 3150
+Wire Wire Line
+	2800 3250 2800 3150
+Wire Wire Line
+	3300 3150 3200 3150
+Wire Wire Line
+	3300 3250 3300 3150
+$Comp
+L Device:C C?
+U 1 1 5F3C031F
+P 2800 3400
+AR Path="/5F3C031F" Ref="C?"  Part="1" 
+AR Path="/5F3BBDAE/5F3C031F" Ref="C6"  Part="1" 
+F 0 "C6" H 2686 3354 50  0000 R CNN
+F 1 "22pF NPO" H 2686 3445 50  0000 R CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 2838 3250 50  0001 C CNN
+F 3 "~" H 2800 3400 50  0001 C CNN
+	1    2800 3400
+	1    0    0    1   
 $EndComp
 $Comp
 L Device:C C?
@@ -579,30 +527,54 @@ F 3 "~" H 3300 3400 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:C C?
-U 1 1 5F3C031F
-P 2800 3400
-AR Path="/5F3C031F" Ref="C?"  Part="1" 
-AR Path="/5F3BBDAE/5F3C031F" Ref="C6"  Part="1" 
-F 0 "C6" H 2686 3354 50  0000 R CNN
-F 1 "22pF NPO" H 2686 3445 50  0000 R CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 2838 3250 50  0001 C CNN
-F 3 "~" H 2800 3400 50  0001 C CNN
-	1    2800 3400
-	1    0    0    1   
+L Device:Crystal Y?
+U 1 1 5F3C0313
+P 3050 3150
+AR Path="/5F3C0313" Ref="Y?"  Part="1" 
+AR Path="/5F3BBDAE/5F3C0313" Ref="Y1"  Part="1" 
+F 0 "Y1" H 3050 3418 50  0000 C CNN
+F 1 "HC49S" H 3050 3327 50  0000 C CNN
+F 2 "Crystal:Crystal_HC49-U_Vertical" H 3050 3150 50  0001 C CNN
+F 3 "~" H 3050 3150 50  0001 C CNN
+	1    3050 3150
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3300 3250 3300 3150
+	3300 3150 3450 3150
+Connection ~ 3300 3150
+$Comp
+L power:GND #PWR?
+U 1 1 5F3C0329
+P 2800 3650
+AR Path="/5F3C0329" Ref="#PWR?"  Part="1" 
+AR Path="/5F3BBDAE/5F3C0329" Ref="#PWR026"  Part="1" 
+F 0 "#PWR026" H 2800 3400 50  0001 C CNN
+F 1 "GND" H 2805 3477 50  0000 C CNN
+F 2 "" H 2800 3650 50  0001 C CNN
+F 3 "" H 2800 3650 50  0001 C CNN
+	1    2800 3650
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	3300 3150 3200 3150
+	2800 3650 2800 3550
+$Comp
+L power:GND #PWR?
+U 1 1 5F3C0337
+P 3300 3650
+AR Path="/5F3C0337" Ref="#PWR?"  Part="1" 
+AR Path="/5F3BBDAE/5F3C0337" Ref="#PWR030"  Part="1" 
+F 0 "#PWR030" H 3300 3400 50  0001 C CNN
+F 1 "GND" H 3305 3477 50  0000 C CNN
+F 2 "" H 3300 3650 50  0001 C CNN
+F 3 "" H 3300 3650 50  0001 C CNN
+	1    3300 3650
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	2800 3250 2800 3150
-Wire Wire Line
-	2800 3150 2900 3150
+	3300 3650 3300 3550
 Text Label 2750 3150 2    50   ~ 0
 XIN32
-Text Label 3400 3150 0    50   ~ 0
-XOUT32
-Text Notes 8900 3550 0    50   ~ 0
-OBS: Pins are configurable, suggested use below
+Connection ~ 2800 3150
+Wire Wire Line
+	2800 3150 2650 3150
 $EndSCHEMATC
