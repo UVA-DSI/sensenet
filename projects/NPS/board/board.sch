@@ -473,7 +473,6 @@ F 3 "http://www.hoperf.com/upload/rf/RFM95_96_97_98W.pdf" H -930 8415 50  0001 C
 	1    2370 6765
 	1    0    0    -1  
 $EndComp
-NoConn ~ 2870 6965
 NoConn ~ 2870 6765
 Text Label 1320 6965 0    50   ~ 0
 RFM_RESET
@@ -1028,7 +1027,6 @@ Wire Wire Line
 	2167 1285 2167 1286
 NoConn ~ 2870 6665
 NoConn ~ 2870 6865
-NoConn ~ 2870 7065
 Text Label 6805 3815 0    50   ~ 0
 RFM_RESET
 Wire Wire Line
@@ -1146,17 +1144,6 @@ F 3 "" H 10430 3715 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:GND #PWR0112
-U 1 1 6138EC1E
-P 10025 4818
-F 0 "#PWR0112" H 10025 4568 50  0001 C CNN
-F 1 "GND" H 10030 4645 50  0000 C CNN
-F 2 "" H 10025 4818 50  0001 C CNN
-F 3 "" H 10025 4818 50  0001 C CNN
-	1    10025 4818
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR0113
 U 1 1 613CC684
 P 8856 3625
@@ -1207,28 +1194,13 @@ D10
 Wire Wire Line
 	10280 4215 10430 4215
 Wire Wire Line
-	10280 4515 10430 4515
-Text Label 10280 4515 0    50   ~ 0
-D13
-Text Label 10430 4615 2    50   ~ 0
-+3V3
-Wire Wire Line
 	10031 3815 10430 3815
-Wire Wire Line
-	10025 4815 10430 4815
 Text GLabel 10280 3615 2    50   Input ~ 0
 Vin
 Wire Wire Line
 	1974 1009 1974 1285
 Wire Wire Line
 	2669 968  2669 1085
-Wire Wire Line
-	10025 4715 10430 4715
-Wire Wire Line
-	10025 4715 10025 4815
-Connection ~ 10025 4815
-Wire Wire Line
-	10025 4815 10025 4818
 $Comp
 L power:PWR_FLAG #FLG0101
 U 1 1 615E97A1
@@ -1243,4 +1215,28 @@ $EndComp
 Connection ~ 3161 1592
 Wire Wire Line
 	3161 1592 3304 1592
+Text Label 3120 7065 0    50   ~ 0
+RFM_DIO1
+Wire Wire Line
+	2870 7065 3120 7065
+Text Label 3120 6965 0    50   ~ 0
+RFM_DIO2
+Wire Wire Line
+	2870 6965 3120 6965
+Text Label 10280 4715 2    50   ~ 0
+RFM_DIO1
+Text Label 10280 4815 2    50   ~ 0
+RFM_DIO2
+Text Label 10280 4615 2    50   ~ 0
+RFM_DIO0
+Text Label 10280 4515 0    50   ~ 0
+D13
+Wire Wire Line
+	10280 4515 10430 4515
+Wire Wire Line
+	10280 4615 10430 4615
+Wire Wire Line
+	10280 4715 10430 4715
+Wire Wire Line
+	10280 4815 10430 4815
 $EndSCHEMATC
